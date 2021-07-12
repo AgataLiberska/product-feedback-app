@@ -73,7 +73,9 @@
             "username": "warlikeduke"
         }
     ],
-    "currentUserId": 2,
+    "currentUser": {
+        "userId": 2
+    },
     "productRequests": [
         {
             "id": 1,

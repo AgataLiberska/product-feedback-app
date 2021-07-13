@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import HomeHeader from './features/homeHeader/HomeHeader';
 import SuggestionsList from './features/suggestions/SuggestionsList';
 
 const App = () => {
@@ -11,10 +12,7 @@ const App = () => {
                     path='/'
                     render={() => (
                         <>
-                            <header>
-                                <h1>FrontEndMentor</h1>
-                                <p>Suggestions Board</p>
-                            </header>
+                            <HomeHeader />
                             <SuggestionsList />
                         </>
                     )}

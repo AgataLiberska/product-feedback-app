@@ -16,7 +16,6 @@ const SuggestionExcerpt = ({ suggestion }) => {
         return count;
     }
 
-    console.log(suggestion.comments)
     return (
         <article>
             <h2><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></h2>

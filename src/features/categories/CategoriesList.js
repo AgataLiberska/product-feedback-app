@@ -1,18 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import { categorySelected, getSelectedCategory } from './categoriesSlice';
+import { categorySelected } from './categoriesSlice';
 
 const CategoriesList = () => {
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categories);
-    const selected = useSelector(state => state.categories.find(cat => cat.selected === true));
-    
-    console.log(selected);
 
-    const renderedCategories = categories.map(item => {
+    const renderedCategories = categories.map(category => {
         return (
-            <button key={item.category} aria-pressed={item.selected} onClick={() => dispatch(categorySelected(item.category))}>
-                {item.category}
+            <button key={category.name} aria-pressed={category.selected} onClick={() => dispatch(categorySelected(category.name))}>
+                {category.name}
             </button>
         )
     })

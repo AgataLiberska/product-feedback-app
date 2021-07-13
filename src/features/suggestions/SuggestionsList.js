@@ -6,40 +6,52 @@ import SuggestionExcerpt from './SuggestionExcerpt';
 
 const SuggestionsList = () => {
     const suggestions = useSelector(state => state.suggestions);
+    const category = useSelector(state => state.categories.find(cat => cat.selected === true))
 
     const [sortBy, setSortBy] = useState('most-upvotes');
 
+    // this will change sorting of the list
     const onSortChange = e => {
         setSortBy(e.target.value);
     }
 
+    // if filter is applied, only display relevant category
+    // and don't do anything on state, create copy
+    const filteredSuggestions = (category && category.name !== 'all') ? suggestions.slice().filter(item => item.category === category.name.toLowerCase()) : suggestions.slice();
+
+    // Now we need to sort but only filtered suggestions
     let sortedSuggestions;
 
     if (sortBy === 'most-upvotes') {
-        sortedSuggestions = suggestions.slice().sort((a,b) => b.upvotes - a.upvotes);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.upvotes - a.upvotes);
     } 
     else if (sortBy === 'least-upvotes') {
-        sortedSuggestions = suggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
     }
     else if (sortBy === 'most-comments') {
-        sortedSuggestions = suggestions.slice().sort((a,b) => b.comments - a.comments);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.comments - a.comments);
     }
     else if (sortBy === 'least-comments') {
-        sortedSuggestions = suggestions.slice().sort((a,b) => a.comments - b.comments);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.comments - b.comments);
     }
 
-    console.log(sortedSuggestions)
+    //great, now we want to display no suggestions screen if there's nothing
+    let content;
 
-    const renderedSuggestions = sortedSuggestions.map(suggestion => {
-        return (
-            <SuggestionExcerpt suggestion={suggestion} key={suggestion.id}/>
-        )
-    })
+    if (sortedSuggestions.length === 0) {
+        content = <div>There is no feedback yet</div>
+    } else {
+        content = sortedSuggestions.map(suggestion => {
+            return (
+                <SuggestionExcerpt suggestion={suggestion} key={suggestion.id}/>
+            )
+        })
+    }
 
     return (
         <main>
             <div>
-                <h1>{suggestions.length} Suggestions</h1>
+                <h1>{filteredSuggestions.length} Suggestions</h1>
                 <div>
                     <label htmlFor="sort">Sort by:</label>
                     <select id="sort" defaultValue="most-upvotes" onChange={e => onSortChange(e)}>
@@ -51,7 +63,7 @@ const SuggestionsList = () => {
                 </div>
                 <Link to='/productRequests/new'/>
             </div>
-            <div>{renderedSuggestions}</div>
+            <div>{content}</div>
         </main>
         
     )

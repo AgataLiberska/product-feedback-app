@@ -2,27 +2,27 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
     {
-        category: "All",
+        name: "all",
         selected: true
     },
     {
-        category: "UI",
+        name: "UI",
         selected: false
     },
     {
-        category: "UX",
+        name: "UX",
         selected: false
     },
     {
-        category: "Enhancement",
+        name: "enhancement",
         selected: false
     },
     {
-        category: "Bugs",
+        name: "bug",
         selected: false
     },
     {
-        category: "Features",
+        name: "feature",
         selected: false
     }
 ]
@@ -33,7 +33,7 @@ export const categoriesSlice = createSlice({
     reducers: {
         categorySelected(state, action) {
             state.forEach(item => item.selected = false);
-            const selectedCat = state.find(el => el.category === action.payload);
+            const selectedCat = state.find(el => el.name === action.payload);
             if (selectedCat) {
                 selectedCat.selected = true;
             }
@@ -45,6 +45,6 @@ export const { categorySelected } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
 
-export const getSelectedCategory = state => {
-    state.categories.find(cat => cat.selected === true)
-}
+// export const getSelectedCategory = state => {
+//     state.categories.find(cat => cat.selected === true)
+// }

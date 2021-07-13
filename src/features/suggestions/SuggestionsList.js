@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { countComments } from '../../utils/helperFunctions';
+
 import SuggestionExcerpt from './SuggestionExcerpt';
 
 const SuggestionsList = () => {
@@ -14,9 +16,11 @@ const SuggestionsList = () => {
     const onSortChange = e => {
         setSortBy(e.target.value);
     }
+    // This logic should probably be done on API level?
 
     // if filter is applied, only display relevant category
     // and don't do anything on state, create copy
+    
     const filteredSuggestions = (category && category.name !== 'all') ? suggestions.slice().filter(item => item.category === category.name.toLowerCase()) : suggestions.slice();
 
     // Now we need to sort but only filtered suggestions
@@ -29,10 +33,10 @@ const SuggestionsList = () => {
         sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
     }
     else if (sortBy === 'most-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.comments - a.comments);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => countComments(b) - countComments(a));
     }
     else if (sortBy === 'least-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.comments - b.comments);
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => countComments(a) - countComments(b));
     }
 
     //great, now we want to display no suggestions screen if there's nothing

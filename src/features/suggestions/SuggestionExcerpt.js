@@ -1,20 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
+import { countComments } from '../../utils/helperFunctions';
 
 const SuggestionExcerpt = ({ suggestion }) => {
-
-    const countComments = () => {
-        let count = 0;
-        count += suggestion.comments.length;
-
-        for (let i=0; i<suggestion.comments.length; i++) {
-            count += suggestion.comments[i].replies.length;
-        }
-
-        return count;
-    }
 
     return (
         <article>
@@ -23,7 +12,7 @@ const SuggestionExcerpt = ({ suggestion }) => {
             <span>{suggestion.category}</span>
             <button>{suggestion.upvotes} upvotes</button>
             <div>
-                {countComments()} comments
+                {countComments(suggestion)} comments
             </div>
             
         </article>

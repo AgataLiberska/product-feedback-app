@@ -38,7 +38,7 @@ const SuggestionsList = () => {
 
     return (
         <main>
-            <header>
+            <div>
                 <h1>{suggestions.length} Suggestions</h1>
                 <div>
                     <label htmlFor="sort">Sort by:</label>
@@ -50,7 +50,7 @@ const SuggestionsList = () => {
                     </select>
                 </div>
                 <Link to='/productRequests/new'/>
-            </header>
+            </div>
             <div>{renderedSuggestions}</div>
         </main>
         

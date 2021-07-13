@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import suggestionsReducer from '../features/suggestions/suggestionsSlice';
 
 export default configureStore({
-    reducer: () => {
-        
+    reducer: {
+        suggestions: suggestionsReducer
     }
 })

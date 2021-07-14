@@ -1,5 +1,6 @@
 import React from 'react';
-import CategoriesList from '../categories/CategoriesList'
+import CategoriesList from '../categories/CategoriesList';
+import RoadMapExcerpt from '../suggestions/RoadMapExcerpt';
 
 const HomeHeader = () => {
     return (
@@ -9,6 +10,7 @@ const HomeHeader = () => {
                 <p>Suggestions Board</p>
             </div>
             <CategoriesList />
+            <RoadMapExcerpt />
         </header>
     )
 }

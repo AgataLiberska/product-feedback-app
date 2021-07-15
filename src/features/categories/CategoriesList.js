@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { categorySelected } from './categoriesSlice';
+import { CategoryButton, CategoryContainer } from './CategoriesListElements';
 
 const CategoriesList = () => {
     const dispatch = useDispatch()
@@ -8,16 +9,16 @@ const CategoriesList = () => {
 
     const renderedCategories = categories.map(category => {
         return (
-            <button key={category.name} aria-pressed={category.selected} onClick={() => dispatch(categorySelected(category.name))}>
+            <CategoryButton key={category.name} aria-pressed={category.selected} onClick={() => dispatch(categorySelected(category.name))} selected={category.selected}>
                 {category.name}
-            </button>
+            </CategoryButton>
         )
     })
 
     return (
-        <div>
+        <CategoryContainer>
             {renderedCategories}
-        </div>
+        </CategoryContainer>
     )
 }
 

@@ -12,8 +12,16 @@ export const CategoryButton = styled.button`
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 
-    &:hover {
-        background-color: var(--medium-blue);
+    &:active {
+        background-color: var(--dark-blue);
+    }
+
+    @media screen and (min-width: var(--tablet)) {
+
+        &:hover {
+            background-color: var(--medium-blue);
+        }
+
     }
 `
 

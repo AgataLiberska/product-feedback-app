@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
         --dark-blue: #4661E6;
         --medium-blue: #CFD7FF;
         --light-blue: #f2f4ff;
+        --dark-grey-blue: #3A4374;
         --white: #fff;
         --tablet: 768px;
         --desktop: 1024px;

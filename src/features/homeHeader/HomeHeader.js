@@ -12,6 +12,7 @@ const HomeHeader = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() =>{
+        updatePredicate();
         window.addEventListener('resize', updatePredicate);
 
         return () => {

@@ -13,6 +13,10 @@ const HomeHeader = () => {
 
     useEffect(() =>{
         window.addEventListener('resize', updatePredicate);
+
+        return () => {
+            window.removeEventListener('resize', updatePredicate);
+        }
     })
 
     const updatePredicate = () => {
@@ -38,7 +42,7 @@ const HomeHeader = () => {
                         </MobileMenuToggle> 
                     : null}
                 </Banner>
-                { isMobile ? <MobileNav /> : null }
+                { isMobile ? <MobileNav isOpen={isNavOpen}/> : null }
                 { isMobile ? null : <CategoriesList />}   
                 { isMobile ? null : <RoadMapExcerpt />}          
             </HeaderContainer>

@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         background-color: var(--background-color);
         font-family: 'Jost', sans-serif;
+        position: relative;
     }
 
     ul, ol {

@@ -2,12 +2,14 @@ import React from 'react';
 import CategoriesList from '../categories/CategoriesList';
 import RoadMapExcerpt from '../roadMap/RoadMapExcerpt';
 
-const MobileNav = () => {
+import { MobileNavContainer } from './MobileNavElements';
+
+const MobileNav = ({isOpen}) => {
     return (
-        <div>
+        <MobileNavContainer open={isOpen}>
             <CategoriesList />
             <RoadMapExcerpt />
-        </div> 
+        </MobileNavContainer> 
     )
 }
 

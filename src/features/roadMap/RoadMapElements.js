@@ -8,14 +8,14 @@ export const RoadMapExcerptContainer = styled.div`
     padding: 1rem 1.5rem 1.5rem;
 `
 
-export const RoadMapExcerptTop = styled.div`
+export const ExcerptTop = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 `
 
-export const RoadMapExcerptHeading = styled.h2`
+export const ExcerptHeading = styled.h2`
     font-size: 1.125rem;
     font-weight: 700;    
     color: var(--dark-grey-blue);
@@ -28,4 +28,43 @@ export const LinkToRoadMap = styled(Link)`
     color: var(--dark-blue);
     text-decoration: underline;
     line-height: 1.25rem;
+`
+
+export const ExcerptCategory = styled.li`
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    color: var(--medium-grey);
+    line-height: 1.5rem;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 50%;
+    
+    }
+
+    &:first-of-type::before {
+        background-color: var(--planned-color);
+    }
+
+    &:nth-of-type(2)::before {
+        background-color: var(--in-progress-color);
+    }
+
+    &:last-of-type::before {
+        background-color: var(--live-color);
+    }
+`
+
+export const ExcerptCategoryNumber = styled.span`
+    position: absolute;
+    right: 0;
+    font-weight: 700;
 `

@@ -8,7 +8,11 @@ const GlobalStyle = createGlobalStyle`
         --medium-blue: #CFD7FF;
         --light-blue: #f2f4ff;
         --dark-grey-blue: #3A4374;
+        --medium-grey: #647196;
         --white: #fff;
+        --planned-color: #f49f85;
+        --in-progress-color: #ad1fea;
+        --live-color: #62bcfa;
         --tablet: 768px;
         --desktop: 1024px;
 

@@ -5,7 +5,7 @@ import MobileNav from './MobileNav';
 import OpenIcon from '../../assets/shared/mobile/icon-hamburger.svg';
 import CloseIcon from '../../assets/shared/mobile/icon-close.svg';
 
-import { HeaderWrapper, HeaderContainer, Banner, BannerText, BannerHeading, BannerTagline, MobileMenuToggle, HamburgerImg, CloseImg } from './HomeHeaderElements';
+import { HeaderWrapper, Banner, BannerText, BannerHeading, BannerTagline, MobileMenuToggle, HamburgerImg, CloseImg } from './HomeHeaderElements';
 
 const HomeHeader = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -30,7 +30,7 @@ const HomeHeader = () => {
 
     return (
         <HeaderWrapper>
-            <HeaderContainer>
+
                 <Banner>
                     <BannerText>
                         <BannerHeading>Frontend Mentor</BannerHeading>
@@ -46,7 +46,6 @@ const HomeHeader = () => {
                 { isMobile ? <MobileNav isOpen={isNavOpen}/> : null }
                 { isMobile ? null : <CategoriesList />}   
                 { isMobile ? null : <RoadMapExcerpt />}          
-            </HeaderContainer>
         </HeaderWrapper>
     )
 }

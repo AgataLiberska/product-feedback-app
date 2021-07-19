@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { countComments } from '../../utils/helperFunctions';
 
 import SuggestionExcerpt from './SuggestionExcerpt';
+import Lightbulb from '../../assets/suggestions/icon-suggestions.svg';
+
+import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SortLabel, SortSelect, AddFeedbackBtn } from './SuggestionsListElements';
 
 const SuggestionsList = () => {
     const suggestions = useSelector(state => state.suggestions);
@@ -53,22 +55,26 @@ const SuggestionsList = () => {
     }
 
     return (
-        <main>
-            <div>
-                <h1>{filteredSuggestions.length} Suggestions</h1>
+        <>
+            <SuggestionsListHeader>
+                <SuggestionsHeading>
+                    <img src={Lightbulb} alt=""/>
+                    {filteredSuggestions.length} Suggestions</SuggestionsHeading>
                 <div>
-                    <label htmlFor="sort">Sort by:</label>
-                    <select id="sort" defaultValue="most-upvotes" onChange={e => onSortChange(e)}>
+                    <SortLabel htmlFor="sort">Sort by:</SortLabel>
+                    <SortSelect id="sort" defaultValue="most-upvotes" onChange={e => onSortChange(e)}>
                         <option value="most-upvotes">Most Upvotes</option>
                         <option value="least-upvotes">Least Upvotes</option>
                         <option value="most-comments">Most Comments</option>
                         <option value="least-comments">Least Comments</option>
-                    </select>
+                    </SortSelect>
                 </div>
-                <Link to='/productRequests/new'/>
-            </div>
-            <div>{content}</div>
-        </main>
+                <AddFeedbackBtn to='/productRequests/new'>+ Add Feedback</AddFeedbackBtn>
+            </SuggestionsListHeader>
+            <SuggestionsListContainer>
+                {content}
+            </SuggestionsListContainer>
+        </>
         
     )
 }

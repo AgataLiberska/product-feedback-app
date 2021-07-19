@@ -2,20 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { countComments } from '../../utils/helperFunctions';
+import CommentBubble from '../../assets/shared/icon-comments.svg';
+import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionsListElements';
 
 const SuggestionExcerpt = ({ suggestion }) => {
 
     return (
-        <article>
-            <h2><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></h2>
-            <p>{suggestion.description}</p>
-            <span>{suggestion.category}</span>
-            <button>{suggestion.upvotes} upvotes</button>
-            <div>
-                {countComments(suggestion)} comments
-            </div>
+        <SuggestionCard>
+            <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
+            <CardText>{suggestion.description}</CardText>
+
+            <CardCategory>{suggestion.category}</CardCategory>
+            <UpvoteButton>
+                <i class="fas fa-chevron-up" />
+                {suggestion.upvotes}
+            </UpvoteButton>
+            <CommentsBtn>
+                <img src={CommentBubble} />
+                {countComments(suggestion)}
+            </CommentsBtn>
             
-        </article>
+        </SuggestionCard>
     )
 }
 

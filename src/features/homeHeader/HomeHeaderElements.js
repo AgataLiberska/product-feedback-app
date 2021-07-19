@@ -4,12 +4,22 @@ import tabletBanner from '../../assets/suggestions/tablet/background-header.png'
 import desktopBanner from '../../assets/suggestions/desktop/background-header.png';
 
 export const HeaderWrapper = styled.header`
- 
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.625rem;
+        margin-bottom: 2.5rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        align-self: start;
+        grid-template-columns: 1fr;
+        grid-template-rows: 8.5rem auto auto;
+        padding: unset;
+        gap: 1.5rem;
+    }
 `
 
-export const HeaderContainer = styled.div`
-
-`
 
 export const Banner = styled.div`
     display: flex;
@@ -22,7 +32,8 @@ export const Banner = styled.div`
     background-position: center center;
     color: var(--white);
 
-    @media screen and (min-width: var(--tablet)) {
+    @media screen and (min-width: 768px) {
+        border-radius: 0.625rem;
         background-image: url(${tabletBanner})
     }
 
@@ -35,6 +46,10 @@ export const BannerText = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media screen and (min-width: 768px) {
+        justify-content: flex-end;
+    }
 `
 
 export const BannerHeading = styled.h1`

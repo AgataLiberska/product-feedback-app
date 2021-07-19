@@ -29,6 +29,7 @@ export const CategoryContainer = styled.div`
     display: flex;
     gap: 0.875rem 0.5rem;
     flex-wrap: wrap;
+    align-content: flex-start;
     padding: 1.5rem 1.125rem 1.5rem 1.5rem;
     background-color: var(--white);
     border-radius: 0.625rem;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { countComments } from '../../utils/helperFunctions';
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionsListElements';
+import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
 
 const SuggestionExcerpt = ({ suggestion }) => {
 
@@ -14,11 +14,11 @@ const SuggestionExcerpt = ({ suggestion }) => {
 
             <CardCategory>{suggestion.category}</CardCategory>
             <UpvoteButton>
-                <i class="fas fa-chevron-up" />
+                <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
             </UpvoteButton>
             <CommentsBtn>
-                <img src={CommentBubble} />
+                <img src={CommentBubble} alt=""/>
                 {countComments(suggestion)}
             </CommentsBtn>
             

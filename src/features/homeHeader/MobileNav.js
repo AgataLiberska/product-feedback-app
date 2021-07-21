@@ -2,7 +2,7 @@ import React from 'react';
 import CategoriesList from '../categories/CategoriesList';
 import RoadMapExcerpt from '../roadMap/RoadMapExcerpt';
 
-import { MobileNavContainer } from './MobileNavElements';
+import { MobileNavContainer } from './MobileNavStyles';
 
 const MobileNav = ({isOpen}) => {
     return (

@@ -13,6 +13,16 @@ const App = () => {
                     path='/'
                     component={Home}
                 />
+                <Route 
+                    exact
+                    path='/productRequests/new'
+                    render={() => (<div>Add new request</div>)}
+                />
+                <Route
+                    exact
+                    path='/productRequests/:id'
+                    render={() => (<div>Request Details</div>)}
+                />
                 <Redirect to='/' />
             </Switch>
             

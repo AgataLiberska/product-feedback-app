@@ -5,7 +5,7 @@ import MobileNav from './MobileNav';
 import OpenIcon from '../../assets/shared/mobile/icon-hamburger.svg';
 import CloseIcon from '../../assets/shared/mobile/icon-close.svg';
 
-import { HeaderWrapper, Banner, BannerText, BannerHeading, BannerTagline, MobileMenuToggle, HamburgerImg, CloseImg } from './HomeHeaderElements';
+import { HeaderWrapper, Banner, BannerText, BannerHeading, BannerTagline, MobileMenuToggle, HamburgerImg, CloseImg } from './HomeHeaderStyles';
 
 const HomeHeader = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);

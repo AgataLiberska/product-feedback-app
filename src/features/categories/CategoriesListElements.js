@@ -10,13 +10,13 @@ export const CategoryButton = styled.button`
     font-weight: 600;
     color: ${({selected}) => selected ? 'var(--white)' : 'var(--dark-blue)'};
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.3s ease;
 
     &:active {
         background-color: var(--dark-blue);
     }
 
-    @media screen and (min-width: var(--tablet)) {
+    @media screen and (min-width: 768px) {
 
         &:hover {
             background-color: var(--medium-blue);

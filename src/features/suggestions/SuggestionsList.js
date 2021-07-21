@@ -5,8 +5,10 @@ import { countComments } from '../../utils/helperFunctions';
 
 import SuggestionExcerpt from './SuggestionExcerpt';
 import Lightbulb from '../../assets/suggestions/icon-suggestions.svg';
+import AddSuggestionBtn from './AddSuggestionBtn';
+import NoSuggestions from './NoSuggestions';
 
-import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SortLabel, SortSelect, AddFeedbackBtn } from './SuggestionsListElements';
+import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsListStyles';
 
 const SuggestionsList = () => {
     const suggestions = useSelector(state => state.suggestions);
@@ -45,7 +47,7 @@ const SuggestionsList = () => {
     let content;
 
     if (sortedSuggestions.length === 0) {
-        content = <div>There is no feedback yet</div>
+        content = <NoSuggestions />
     } else {
         content = sortedSuggestions.map(suggestion => {
             return (
@@ -57,19 +59,25 @@ const SuggestionsList = () => {
     return (
         <>
             <SuggestionsListHeader>
-                <SuggestionsHeading>
-                    <img src={Lightbulb} alt=""/>
-                    {filteredSuggestions.length} Suggestions</SuggestionsHeading>
-                <div>
-                    <SortLabel htmlFor="sort">Sort by:</SortLabel>
-                    <SortSelect id="sort" defaultValue="most-upvotes" onChange={e => onSortChange(e)}>
-                        <option value="most-upvotes">Most Upvotes</option>
-                        <option value="least-upvotes">Least Upvotes</option>
-                        <option value="most-comments">Most Comments</option>
-                        <option value="least-comments">Least Comments</option>
-                    </SortSelect>
-                </div>
-                <AddFeedbackBtn to='/productRequests/new'>+ Add Feedback</AddFeedbackBtn>
+                <SuggestionHeadingSortWrapper>
+                    <SuggestionsHeading>
+                        <img src={Lightbulb} alt=""/>
+                        {filteredSuggestions.length} Suggestions
+                    </SuggestionsHeading>
+                    <div>
+                        <SortLabel htmlFor="sort">
+                            Sort by:
+                        </SortLabel>
+                        <SortSelect id="sort" defaultValue="most-upvotes" onChange={e => onSortChange(e)}>
+                            <option value="most-upvotes">Most Upvotes</option>
+                            <option value="least-upvotes">Least Upvotes</option>
+                            <option value="most-comments">Most Comments</option>
+                            <option value="least-comments">Least Comments</option>
+                        </SortSelect>
+                    </div>
+                </SuggestionHeadingSortWrapper>
+                
+                <AddSuggestionBtn to={'/productRequests/new'}>+ Add Feedback</AddSuggestionBtn>
             </SuggestionsListHeader>
             <SuggestionsListContainer>
                 {content}

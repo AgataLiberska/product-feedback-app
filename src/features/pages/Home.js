@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeHeader from '../homeHeader/HomeHeader';
 import SuggestionsList from '../suggestions/SuggestionsList';
-import { HomePageContainer } from './HomePageElements';
+import { HomePageContainer } from './HomePageStyles';
 
 const Home = () => {
     return (

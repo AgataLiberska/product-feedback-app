@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { suggestionUpvoted } from './suggestionsSlice';
+import { upvoteAdded, getCurrentUser } from '../users/usersSlice';
 
 import { countComments } from '../../utils/helperFunctions';
 import CommentBubble from '../../assets/shared/icon-comments.svg';
@@ -10,10 +11,11 @@ import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, Comm
 
 const SuggestionExcerpt = ({ suggestion }) => {
     const dispatch = useDispatch()
+    const currentUser = useSelector(state => getCurrentUser(state));
 
     const handleUpvoteClick = () => {
-        console.log('click');
         dispatch(suggestionUpvoted(suggestion.id))
+        dispatch(upvoteAdded({userId: currentUser.id, suggestionId: suggestion.id}))
     }
 
     return (

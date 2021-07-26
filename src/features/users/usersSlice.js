@@ -119,3 +119,5 @@ export const usersSlice = createSlice({
 export const { upvoteAdded } = usersSlice.actions;
 
 export default usersSlice.reducer;
+
+export const getCurrentUser = state => state.users.find(user => user.currentUser === true);

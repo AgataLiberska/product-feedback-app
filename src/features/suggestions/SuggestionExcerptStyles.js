@@ -75,12 +75,12 @@ export const UpvoteButton = styled.button`
     grid-area: upvote;
     justify-self: start;
     padding: 0.375rem 0.75rem 0.375rem 1rem;
-    background-color: var(--light-blue);
+    background-color: ${props => props.isPressed ? "var(--dark-blue)" : "var(--light-blue)"} ;
     border: 0;
     border-radius: 0.625rem;
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--dark-grey-blue);
+    color: ${props => props.isPressed ? "var(--white)" : "var(--dark-grey-blue)"};
     transition: background-color 0.3s ease;
     cursor: pointer;
 
@@ -89,7 +89,7 @@ export const UpvoteButton = styled.button`
         margin-right: 0.625rem;        
 
         & path {
-            fill: var(--dark-blue);
+            fill: ${props => props.isPressed ? "var(--white)" : "var(--dark-blue)"};
         }
     }
 

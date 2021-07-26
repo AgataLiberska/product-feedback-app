@@ -7,7 +7,7 @@ const initialState = [
             "name": "Suzanne Chang",
             "username": "upbeat1811",
             "currentUser": false,
-            "upvotedSuggestions": []
+            "upvotedSuggestions": [2, 5]
         },
         {
             "id": 2,
@@ -15,7 +15,7 @@ const initialState = [
             "name": "Zena Kelley",
             "username": "velvetround",
             "currentUser": true,
-            "upvotedSuggestions": []
+            "upvotedSuggestions": [7, 1, 12]
         },
         {
             "id": 3,
@@ -112,11 +112,20 @@ export const usersSlice = createSlice({
             if (currentUser) {
                 currentUser.upvotedSuggestions.push(suggestionId);
             }
+        },
+        upvoteRemoved(state, action) {
+            const { userId, suggestionId } = action.payload;
+
+            const currentUser = state.find(user => user.id === userId);
+
+            if (currentUser) {
+                currentUser.upvotedSuggestions.filter(item => item !== suggestionId);
+            }
         }
     }
 })
 
-export const { upvoteAdded } = usersSlice.actions;
+export const { upvoteAdded, upvoteRemoved } = usersSlice.actions;
 
 export default usersSlice.reducer;
 

@@ -243,10 +243,16 @@ export const suggestionsSlice = createSlice({
             if (existingSuggestion) {
                 existingSuggestion.upvotes++;
             }
+        },
+        removeSuggestionUpvoted(state, action) {
+            const existingSuggestion = state.find(el => el.id === action.payload);
+            if (existingSuggestion) {
+                existingSuggestion.upvotes--;
+            }
         }
     }
 })
 
-export const { suggestionUpvoted } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;

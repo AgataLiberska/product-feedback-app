@@ -32,7 +32,12 @@ export const CardHeading = styled.h2`
     line-height: 1.25rem;
 
     & a {
+        transition: color 0.3s ease;
         color: var(--dark-grey-blue);
+
+        &:hover {
+            color: var(--dark-blue);
+        }
     }
 
     @media screen and (min-width: 768px) {

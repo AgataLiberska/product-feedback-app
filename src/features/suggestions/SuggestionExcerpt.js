@@ -23,7 +23,7 @@ const SuggestionExcerpt = ({ suggestion }) => {
         else {
             setIsUpvoted(false);
         }   
-    }, [])
+    }, [currentUser, suggestion])
 
     const handleUpvoteClick = () => {
         setIsUpvoted(!isUpvoted);

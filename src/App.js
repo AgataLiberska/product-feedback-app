@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Home from './features/pages/Home';
+import Details from './features/pages/Details';
 
 const App = () => {
     return (
@@ -21,7 +22,7 @@ const App = () => {
                 <Route
                     exact
                     path='/productRequests/:id'
-                    render={() => (<div>Request Details</div>)}
+                    render={Details}
                 />
                 <Redirect to='/' />
             </Switch>

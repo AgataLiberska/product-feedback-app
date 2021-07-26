@@ -6,5 +6,6 @@ export default configureStore({
     reducer: {
         suggestions: suggestionsReducer,
         categories: categoriesReducer
-    }
+    },
+    devTools: true,
 })

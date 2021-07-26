@@ -238,8 +238,15 @@ export const suggestionsSlice = createSlice({
     name: "suggestions",
     initialState, 
     reducers: {
-
+        suggestionUpvoted(state, action) {
+            const existingSuggestion = state.find(el => el.id === action.payload);
+            if (existingSuggestion) {
+                existingSuggestion.upvotes++;
+            }
+        }
     }
 })
+
+export const { suggestionUpvoted } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;

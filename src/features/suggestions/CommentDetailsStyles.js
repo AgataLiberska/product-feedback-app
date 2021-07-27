@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const CommentContainer = styled.li`
     font-size: 0.8125rem;
@@ -45,9 +44,16 @@ export const AuthorUsername = styled.p`
     color: var(--medium-grey);
 `
 
-export const ReplyButton = styled(Link)`
+export const ReplyButton = styled.button`
+    background-color: transparent;
+    border: none;
     color: var(--dark-blue);
     font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
 `
 
 export const CommentText = styled.p`
@@ -71,4 +77,26 @@ export const ReplyContainer = styled.div`
 export const ReplyingToUser = styled.span`
     font-weight: 700;
     color: var(--primary-btn);
+`
+
+export const ReplyFormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1rem;
+    gap: 0.75rem;
+
+    @media screen and (min-width: 500px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding-left: 4.5rem;
+    }
+
+    
 `

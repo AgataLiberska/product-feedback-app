@@ -5,7 +5,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { getCurrentUser } from '../users/usersSlice';
 import { commentAdded } from '../suggestions/suggestionsSlice';
 
-import { FormContainer, FormHeading, TextArea, BottomFormWrapper, CharactersLeft, SubmitButton } from './AddCommentFormStyles';
+import { FormWrapper, FormHeading, FormContainer, TextArea, BottomFormWrapper, CharactersLeft, SubmitButton } from './AddCommentFormStyles';
 
 const AddCommentForm = ({suggestion}) => {
     const dispatch = useDispatch();
@@ -37,9 +37,9 @@ const AddCommentForm = ({suggestion}) => {
     }
 
     return (
-        <FormContainer>
+        <FormWrapper>
             <FormHeading>Add Comment</FormHeading>
-            <form>
+            <FormContainer>
                 <TextArea 
                     aria-label="Type your comment here"
                     placeholder="Type your comment here"
@@ -52,8 +52,8 @@ const AddCommentForm = ({suggestion}) => {
                     <SubmitButton onClick={onSaveCommentClicked}>Post Comment</SubmitButton>
                 </BottomFormWrapper>
 
-            </form>
-        </FormContainer>
+            </FormContainer>
+        </FormWrapper>
     )
 }
 

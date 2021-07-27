@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FormContainer = styled.section`
+export const FormWrapper = styled.section`
     padding: 1.5rem;
     background-color: var(--white);
     border-radius: 0.625rem;
@@ -16,11 +16,15 @@ export const FormHeading = styled.h2`
     line-height: 1.625rem;
     color: var(--dark-grey-blue);
 `
+export const FormContainer = styled.form`
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+`
 
 export const TextArea = styled.textarea`
     width: 100%;
     height: 5rem;
-    margin-bottom: 1rem;
     padding: 1rem;
     border: 1px solid transparent;
     border-radius: 0.625rem;
@@ -62,6 +66,7 @@ export const SubmitButton = styled.button`
     font-size: 0.75rem;    
     font-weight: 700;
     color: var(--white);
+    white-space: nowrap;
 
     @media screen and (min-width: 768px) {
         font-size: 0.875rem;

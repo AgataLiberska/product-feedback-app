@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const HomePageContainer = styled.div`
-
     @media screen and (min-width: 768px) {
         margin: 3.5rem 2.5rem 7rem;
     }

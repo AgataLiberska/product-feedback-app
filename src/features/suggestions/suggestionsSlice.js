@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = [
     {
@@ -42,12 +42,14 @@ const initialState = [
                 "content": "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and  apparently saves battery life.",
                 "userId": 4,
                 "replies": [
-                    {
+                    {   
+                        "id": nanoid(),
                         "content": "While waiting for dark mode, there are browser extensions that will also do the job. Search for 'dark theme' followed by your browser. There might be a need to turn off the extension for sites with naturally black backgrounds though.",
                         "replyingToUserId": 4,
                         "userId": 5
                     },
                     {
+                        "id": nanoid(),
                         "content": "Good point! Using any kind of style extension is great and can be highly customizable, like the ability to change contrast and brightness. I'd prefer not to use one of such extensions, however, for security and privacy reasons.",
                         "replyingToUserId": 5,
                         "userId": 6
@@ -108,6 +110,7 @@ const initialState = [
                 "userId": 9,
                 "replies": [
                     {
+                        "id": nanoid(),
                         "content": "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they’ve done lately. I learn a lot by reading good developers' code.",
                         "replyingToUserId": 9,
                         "userId": 2
@@ -224,6 +227,7 @@ const initialState = [
                 "userId": 9,
                 "replies": [
                     {
+                        "id": nanoid(),
                         "content": "Me too! I'd also love to see celebrations at specific points as well. It would help people take a moment to celebrate their achievements!",
                         "replyingToUserId": 9,
                         "userId": 1
@@ -238,8 +242,24 @@ export const suggestionsSlice = createSlice({
     name: "suggestions",
     initialState, 
     reducers: {
-
+        suggestionUpvoted(state, action) {
+            const existingSuggestion = state.find(el => el.id === action.payload);
+            if (existingSuggestion) {
+                existingSuggestion.upvotes++;
+            }
+        },
+        removeSuggestionUpvoted(state, action) {
+            const existingSuggestion = state.find(el => el.id === action.payload);
+            if (existingSuggestion) {
+                existingSuggestion.upvotes--;
+            }
+        }
     }
 })
 
+export const { suggestionUpvoted, removeSuggestionUpvoted } = suggestionsSlice.actions;
+
 export default suggestionsSlice.reducer;
+
+export const findSuggestionById = (state, id) => 
+    state.suggestions.find(el => el.id === +id);

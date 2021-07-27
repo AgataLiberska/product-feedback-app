@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
-import Home from './features/pages/Home';
+import Home from './pages/Home';
+import Details from './pages/Details';
 
 const App = () => {
     return (
@@ -20,8 +21,8 @@ const App = () => {
                 />
                 <Route
                     exact
-                    path='/productRequests/:id'
-                    render={() => (<div>Request Details</div>)}
+                    path='/productRequests/:requestId'
+                    component={Details}
                 />
                 <Redirect to='/' />
             </Switch>

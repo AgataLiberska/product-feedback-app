@@ -117,7 +117,7 @@ export const usersSlice = createSlice({
             const { userId, suggestionId } = action.payload;
 
             const currentUser = state.find(user => user.id === userId);
-            console.log(currentUser)
+            
             if (currentUser) {
                 const suggestionIndex = currentUser.upvotedSuggestions.indexOf(suggestionId);
                 currentUser.upvotedSuggestions.splice(suggestionIndex, 1);

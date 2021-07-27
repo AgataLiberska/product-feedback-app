@@ -8,6 +8,7 @@ const initialState = [
         "upvotes": 112,
         "status": "suggestion",
         "description": "Easier to search for solutions based on a specific stack.",
+        "userId": 4,
         "comments": [
             {
                 "id": 1,
@@ -30,6 +31,7 @@ const initialState = [
         "upvotes": 99,
         "status": "suggestion",
         "description": "It would help people with light sensitivities and who prefer dark mode.",
+        "userId": 2,
         "comments": [
             {
                 "id": 3,
@@ -65,6 +67,7 @@ const initialState = [
         "upvotes": 65,
         "status": "suggestion",
         "description": "Challenge-specific Q&A would make for easy reference.",
+        "userId": 3,
         "comments": [
             {
                 "id": 5,
@@ -81,6 +84,7 @@ const initialState = [
         "upvotes": 51,
         "status": "suggestion",
         "description": "Images and screencasts can enhance comments on solutions.",
+        "userId": 6,
         "comments": [
             {
                 "id": 6,
@@ -103,6 +107,7 @@ const initialState = [
         "upvotes": 42,
         "status": "suggestion",
         "description": "Stay updated on comments and solutions other people post.",
+        "userId": 1,
         "comments": [
             {
                 "id": 8,
@@ -132,6 +137,7 @@ const initialState = [
         "upvotes": 3,
         "status": "suggestion",
         "description": "Challenge preview images are missing when you apply a filter.",
+        "userId": 3,
         "comments": []
     },
     {
@@ -141,6 +147,7 @@ const initialState = [
         "upvotes": 123,
         "status": "planned",
         "description": "It would be great to see a more detailed breakdown of solutions.",
+        "userId": 8,
         "comments": [
             {
                 "id": 10,
@@ -163,6 +170,7 @@ const initialState = [
         "upvotes": 28,
         "status": "planned",
         "description": "Sequenced projects for different goals to help people improve.",
+        "userId": 5,
         "comments": [
             {
                 "id": 12,
@@ -179,6 +187,7 @@ const initialState = [
         "upvotes": 62,
         "status": "in-progress",
         "description": "Add ability to create professional looking portfolio from profile.",
+        "userId": 2,
         "comments": [
             {
                 "id": 13,
@@ -195,6 +204,7 @@ const initialState = [
         "upvotes": 31,
         "status": "in-progress",
         "description": "Be able to bookmark challenges to take later on.",
+        "userId": 7,
         "comments": [
             {
                 "id": 14,
@@ -211,6 +221,7 @@ const initialState = [
         "upvotes": 9,
         "status": "in-progress",
         "description": "Screenshots of solutions with animations don’t display correctly.",
+        "userId": 8,
         "comments": []
     },
     {
@@ -220,6 +231,7 @@ const initialState = [
         "upvotes": 71,
         "status": "live",
         "description": "Small animations at specific points can add delight.",
+        "userId": 5,
         "comments": [
             {
                 "id": 15,
@@ -253,11 +265,20 @@ export const suggestionsSlice = createSlice({
             if (existingSuggestion) {
                 existingSuggestion.upvotes--;
             }
+        },
+        commentAdded(state, action) {
+            const { currentSuggestionId, newComment } = action.payload;
+        
+            const existingSuggestion = state.find(el => el.id === currentSuggestionId);
+
+            if (existingSuggestion) {
+                existingSuggestion.comments.push(newComment);
+            }
         }
     }
 })
 
-export const { suggestionUpvoted, removeSuggestionUpvoted } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted, commentAdded } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;
 

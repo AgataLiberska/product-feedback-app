@@ -62,6 +62,9 @@ export const SortSelect = styled.select`
 // The list container
 
 export const SuggestionsListContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
     padding: 0 1.5rem;
 
     @media screen and (min-width: 768px) {

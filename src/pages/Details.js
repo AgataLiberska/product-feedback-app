@@ -1,13 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
 
 import SuggestionExcerpt from '../features/suggestions/SuggestionExcerpt';
 import CommentsList from '../features/suggestions/CommentsList';
+import AddCommentForm from '../features/suggestions/AddCommentForm';
 
-import { DetailsPageWrapper, DetailsMenu } from './DetailsPageStyles';
+import BackArrow from '../assets/shared/icon-arrow-left.svg';
+
+import { DetailsPageWrapper, DetailsMenu, GoBackLink, EditFeedbackBtn } from './DetailsPageStyles';
+import { getCurrentUser } from '../features/users/usersSlice';
 
 
 const Details = ({match}) => {
@@ -16,21 +19,27 @@ const Details = ({match}) => {
     const currentSuggestion = useSelector((state) => 
         findSuggestionById(state, suggestionId)
     )
+    const currentUser = useSelector(state => getCurrentUser(state));
+
+    const isAuthor = currentUser.id === currentSuggestion.userId;
     
     
     return (
         <DetailsPageWrapper>
             <DetailsMenu>
-                <Link to='/'>
-                    <i className="fas fa-chevron-left" />
+                <GoBackLink to='/'>
+                    <img src={BackArrow} alt='' />
                     Go Back
-                </Link>
-                <button>
+                </GoBackLink>
+                { isAuthor ? 
+                <EditFeedbackBtn to={`/productRequests/${suggestionId}/edit`}>
                     Edit Feedback
-                </button>
+                </EditFeedbackBtn>
+                : null }
             </DetailsMenu>
             <SuggestionExcerpt suggestion={currentSuggestion} />
             <CommentsList suggestion={currentSuggestion} />
+            <AddCommentForm suggestion={currentSuggestion}/>
         </DetailsPageWrapper>
 
 

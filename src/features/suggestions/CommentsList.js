@@ -3,6 +3,8 @@ import { countComments } from '../../utils/helperFunctions';
 
 import CommentDetails from './CommentDetails';
 
+import { CommentsListContainer, CommentsCount } from './CommentsListStyles';
+
 const CommentsList = ({suggestion}) => {
 
     const renderedComments = suggestion.comments.map(comment => {
@@ -11,12 +13,12 @@ const CommentsList = ({suggestion}) => {
     })    
 
     return (
-        <div>
-            <p>
+        <CommentsListContainer>
+            <CommentsCount>
                 {countComments(suggestion)} Comments
-            </p>
+            </CommentsCount>
             {renderedComments}
-        </div>
+        </CommentsListContainer>
     )
 }
 

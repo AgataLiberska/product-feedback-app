@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = [
         {
             "id": 1,
-            "image": "./assets/user-images/image-suzanne.jpg",
+            "image": require("../../assets/user-images/image-suzanne.jpg").default,
             "name": "Suzanne Chang",
             "username": "upbeat1811",
             "currentUser": false,
@@ -11,7 +11,7 @@ const initialState = [
         },
         {
             "id": 2,
-            "image": "./assets/user-images/image-zena.jpg",
+            "image": require("../../assets/user-images/image-zena.jpg").default,
             "name": "Zena Kelley",
             "username": "velvetround",
             "currentUser": true,
@@ -19,7 +19,7 @@ const initialState = [
         },
         {
             "id": 3,
-            "image": "./assets/user-images/image-thomas.jpg",
+            "image": require("../../assets/user-images/image-thomas.jpg").default,
             "name": "Thomas Hood",
             "username": "brawnybrave",
             "currentUser": false,
@@ -27,7 +27,7 @@ const initialState = [
         },
         {
             "id": 4,
-            "image": "./assets/user-images/image-james.jpg",
+            "image": require("../../assets/user-images/image-james.jpg").default,
             "name": "James Skinner",
             "username": "hummingbird1",
             "currentUser": false,
@@ -35,7 +35,7 @@ const initialState = [
         },
         {
             "id": 5,
-            "image": "./assets/user-images/image-anne.jpg",
+            "image": require("../../assets/user-images/image-anne.jpg").default,
             "name": "Anne Valentine",
             "username": "annev1990",
             "currentUser": false,
@@ -43,7 +43,7 @@ const initialState = [
         },
         {
             "id": 6,
-            "image": "./assets/user-images/image-ryan.jpg",
+            "image": require("../../assets/user-images/image-ryan.jpg").default,
             "name": "Ryan Welles",
             "username": "voyager.344",
             "currentUser": false,
@@ -51,7 +51,7 @@ const initialState = [
         },
         {
             "id": 7,
-            "image": "./assets/user-images/image-george.jpg",
+            "image": require("../../assets/user-images/image-george.jpg").default,
             "name": "George Partridge",
             "username": "soccerviewer8",
             "currentUser": false,
@@ -59,7 +59,7 @@ const initialState = [
         },
         {
             "id": 8,
-            "image": "./assets/user-images/image-roxanne.jpg",
+            "image": require("../../assets/user-images/image-roxanne.jpg").default,
             "name": "Roxanne Travis",
             "username": "peppersprime32",
             "currentUser": false,
@@ -67,7 +67,7 @@ const initialState = [
         },
         {
             "id": 9,
-            "image": "./assets/user-images/image-victoria.jpg",
+            "image": require("../../assets/user-images/image-victoria.jpg").default,
             "name": "Victoria Mejia",
             "username": "arlen_the_marlin",
             "currentUser": false,
@@ -75,7 +75,7 @@ const initialState = [
         },
         {
             "id": 10,
-            "image": "./assets/user-images/image-jackson.jpg",
+            "image": require("../../assets/user-images/image-jackson.jpg").default,
             "name": "Jackson Barker",
             "username": "countryspirit",
             "currentUser": false,
@@ -83,7 +83,7 @@ const initialState = [
         },
         {
             "id": 11,
-            "image": "./assets/user-images/image-elijah.jpg",
+            "image": require("../../assets/user-images/image-elijah.jpg").default,
             "name": "Elijah Moss",
             "username": "hexagon.bestagon",
             "currentUser": false,
@@ -91,7 +91,7 @@ const initialState = [
         },
         {
             "id": 12,
-            "image": "./assets/user-images/image-javier.jpg",
+            "image": require("../../assets/user-images/image-javier.jpg").default,
             "name": "Javier Pollard",
             "username": "warlikeduke",
             "currentUser": false,
@@ -132,3 +132,5 @@ export const { upvoteAdded, upvoteRemoved } = usersSlice.actions;
 export default usersSlice.reducer;
 
 export const getCurrentUser = state => state.users.find(user => user.currentUser === true);
+
+export const getUserById = (state, id) => state.users.find(user => user.id === id)

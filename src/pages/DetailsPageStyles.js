@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 
 export const DetailsPageWrapper = styled.div`
     margin: 1.5rem 1.5rem 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     @media screen and (min-width: 768px) {
         max-width: 45.5rem;
@@ -17,7 +20,6 @@ export const DetailsMenu = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
 `
 
 export const GoBackLink = styled(Link)`

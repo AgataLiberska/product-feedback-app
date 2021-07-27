@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
 
 import SuggestionExcerpt from '../features/suggestions/SuggestionExcerpt';
 import CommentsList from '../features/suggestions/CommentsList';
+import AddCommentForm from '../features/suggestions/AddCommentForm';
 
 import BackArrow from '../assets/shared/icon-arrow-left.svg';
 
@@ -39,6 +39,7 @@ const Details = ({match}) => {
             </DetailsMenu>
             <SuggestionExcerpt suggestion={currentSuggestion} />
             <CommentsList suggestion={currentSuggestion} />
+            <AddCommentForm suggestion={currentSuggestion}/>
         </DetailsPageWrapper>
 
 

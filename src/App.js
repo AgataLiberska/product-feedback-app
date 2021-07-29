@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Home from './pages/Home';
 import Details from './pages/Details';
+import NewFeedback from './pages/NewFeedback';
 
 const App = () => {
     return (
@@ -17,7 +18,7 @@ const App = () => {
                 <Route 
                     exact
                     path='/productRequests/new'
-                    render={() => (<div>Add new request</div>)}
+                    component={NewFeedback}
                 />
                 <Route
                     exact

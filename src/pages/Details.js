@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
 
 import SuggestionExcerpt from '../features/suggestions/SuggestionExcerpt';
-import CommentsList from '../features/suggestions/CommentsList';
-import AddCommentForm from '../features/suggestions/AddCommentForm';
+import CommentsList from '../features/comments/CommentsList';
+import AddCommentForm from '../features/comments/AddCommentForm';
 
 import BackArrow from '../assets/shared/icon-arrow-left.svg';
 

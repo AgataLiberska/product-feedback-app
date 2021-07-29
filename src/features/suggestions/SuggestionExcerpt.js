@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { suggestionUpvoted, removeSuggestionUpvoted } from './suggestionsSlice';
 import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice';
 
-import { countComments } from '../../utils/helperFunctions';
 import CommentBubble from '../../assets/shared/icon-comments.svg';
 import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
 
@@ -52,7 +51,7 @@ const SuggestionExcerpt = ({ suggestion }) => {
             </UpvoteButton>
             <CommentsBtn to={`/productRequests/${suggestion.id}`}>
                 <img src={CommentBubble} alt=""/>
-                {countComments(suggestion)}
+                {suggestion.comments}
             </CommentsBtn>
             
         </SuggestionCard>

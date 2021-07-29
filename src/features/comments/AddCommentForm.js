@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { getCurrentUser } from '../users/usersSlice';
-import { commentAdded } from '../suggestions/suggestionsSlice';
+import { commentAdded } from '../comments/commentsSlice';
+import { commentCounted } from '../suggestions/suggestionsSlice';
 
-import { FormWrapper, FormHeading, FormContainer, TextArea, BottomFormWrapper, CharactersLeft, SubmitButton } from './AddCommentFormStyles';
+import { FormWrapper, FormHeading, FormContainer, BottomFormWrapper, CharactersLeft } from './AddCommentFormStyles';
+import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
 const AddCommentForm = ({suggestion}) => {
     const dispatch = useDispatch();
@@ -28,10 +30,11 @@ const AddCommentForm = ({suggestion}) => {
             id: nanoid(),
             content: comment,
             userId: currentUser.id,
-            replies: [],
+            suggestionId: currentSuggestionId
         }
 
-        dispatch(commentAdded({currentSuggestionId, newComment}));
+        dispatch(commentAdded(newComment));
+        dispatch(commentCounted(currentSuggestionId))
 
         setComment("");
     }

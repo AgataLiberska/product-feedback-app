@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { countComments } from '../../utils/helperFunctions';
-
 import SuggestionExcerpt from './SuggestionExcerpt';
 import Lightbulb from '../../assets/suggestions/icon-suggestions.svg';
 import AddSuggestionBtn from './AddSuggestionBtn';
@@ -37,10 +35,10 @@ const SuggestionsList = () => {
         sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
     }
     else if (sortBy === 'most-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => countComments(b) - countComments(a));
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.comments - a.comments);
     }
     else if (sortBy === 'least-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => countComments(a) - countComments(b));
+        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.comments - b.comments);
     }
 
     //great, now we want to display no suggestions screen if there's nothing

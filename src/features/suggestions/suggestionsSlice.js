@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
     {
@@ -9,20 +9,7 @@ const initialState = [
         "status": "suggestion",
         "description": "Easier to search for solutions based on a specific stack.",
         "userId": 4,
-        "comments": [
-            {
-                "id": 1,
-                "content": "Awesome idea! Trying to find framework-specific projects within the hubs can be tedious",
-                "userId": 1,
-                "replies": []
-            },
-            {
-                "id": 2,
-                "content": "Please use fun, color-coded labels to easily identify them at a glance",
-                "userId": 3,
-                "replies": []
-            }
-        ]
+        "comments": 2
     },
     {
         "id": 2,
@@ -32,33 +19,7 @@ const initialState = [
         "status": "suggestion",
         "description": "It would help people with light sensitivities and who prefer dark mode.",
         "userId": 2,
-        "comments": [
-            {
-                "id": 3,
-                "content": "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.",
-                "userId": 11,
-                "replies": []
-            },
-            {
-                "id": 4,
-                "content": "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and  apparently saves battery life.",
-                "userId": 4,
-                "replies": [
-                    {   
-                        "id": nanoid(),
-                        "content": "While waiting for dark mode, there are browser extensions that will also do the job. Search for 'dark theme' followed by your browser. There might be a need to turn off the extension for sites with naturally black backgrounds though.",
-                        "replyingToUserId": 4,
-                        "userId": 5
-                    },
-                    {
-                        "id": nanoid(),
-                        "content": "Good point! Using any kind of style extension is great and can be highly customizable, like the ability to change contrast and brightness. I'd prefer not to use one of such extensions, however, for security and privacy reasons.",
-                        "replyingToUserId": 5,
-                        "userId": 6
-                    }
-                ]
-            }
-        ]
+        "comments": 4
     },
     {
         "id": 3,
@@ -68,14 +29,7 @@ const initialState = [
         "status": "suggestion",
         "description": "Challenge-specific Q&A would make for easy reference.",
         "userId": 3,
-        "comments": [
-            {
-                "id": 5,
-                "content": "Much easier to get answers from devs who can relate, since they've either finished the challenge themselves or are in the middle of it.",
-                "userId": 7,
-                "replies": []
-            }
-        ]
+        "comments": 1
     },
     {
         "id": 4,
@@ -85,20 +39,7 @@ const initialState = [
         "status": "suggestion",
         "description": "Images and screencasts can enhance comments on solutions.",
         "userId": 6,
-        "comments": [
-            {
-                "id": 6,
-                "content": "Right now, there is no ability to add images while giving feedback which isn't ideal because I have to use another app to show what I mean",
-                "userId": 12,
-                "replies": []
-            },
-            {
-                "id": 7,
-                "content": "Yes I'd like to see this as well. Sometimes I want to add a short video or gif to explain the site's behavior..",
-                "userId": 8,
-                "replies": []
-            }
-        ]
+        "comments": 2
     },
     {
         "id": 5,
@@ -108,27 +49,7 @@ const initialState = [
         "status": "suggestion",
         "description": "Stay updated on comments and solutions other people post.",
         "userId": 1,
-        "comments": [
-            {
-                "id": 8,
-                "content": "I also want to be notified when devs I follow submit projects on FEM. Is in-app notification also in the pipeline?",
-                "userId": 9,
-                "replies": [
-                    {
-                        "id": nanoid(),
-                        "content": "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they’ve done lately. I learn a lot by reading good developers' code.",
-                        "replyingToUserId": 9,
-                        "userId": 2
-                    }
-                ]
-            },
-            {
-                "id": 9,
-                "content": "I've been saving the profile URLs of a few people and I check what they’ve been doing from time to time. Being able to follow them solves that",
-                "userId": 10,
-                "replies": []
-            }
-        ]
+        "comments": 3
     },
     {
         "id": 6,
@@ -138,7 +59,7 @@ const initialState = [
         "status": "suggestion",
         "description": "Challenge preview images are missing when you apply a filter.",
         "userId": 3,
-        "comments": []
+        "comments": 0
     },
     {
         "id": 7,
@@ -148,20 +69,7 @@ const initialState = [
         "status": "planned",
         "description": "It would be great to see a more detailed breakdown of solutions.",
         "userId": 8,
-        "comments": [
-            {
-                "id": 10,
-                "content": "This would be awesome! It would be so helpful to see an overview of my code in a way that makes it easy to spot where things could be improved.",
-                "userId": 9,
-                "replies": []
-            },
-            {
-                "id": 11,
-                "content": "Yeah, this would be really good. I'd love to see deeper insights into my code!",
-                "userId": 10,
-                "replies": []
-            }
-        ]
+        "comments": 2
     },
     {
         "id": 8,
@@ -171,14 +79,7 @@ const initialState = [
         "status": "planned",
         "description": "Sequenced projects for different goals to help people improve.",
         "userId": 5,
-        "comments": [
-            {
-                "id": 12,
-                "content": "Having a path through the challenges that I could follow would be brilliant! Sometimes I'm not sure which challenge would be the best next step to take. So this would help me navigate through them!",
-                "userId": 7,
-                "replies": []
-            }
-        ]
+        "comments": 1
     },
     {
         "id": 9,
@@ -188,14 +89,7 @@ const initialState = [
         "status": "in-progress",
         "description": "Add ability to create professional looking portfolio from profile.",
         "userId": 2,
-        "comments": [
-            {
-                "id": 13,
-                "content": "I haven't built a portfolio site yet, so this would be really helpful. Might it also be possible to choose layout and colour themes?!",
-                "userId": 6,
-                "replies": []
-            }
-        ]
+        "comments": 1
     },
     {
         "id": 10,
@@ -205,14 +99,7 @@ const initialState = [
         "status": "in-progress",
         "description": "Be able to bookmark challenges to take later on.",
         "userId": 7,
-        "comments": [
-            {
-                "id": 14,
-                "content": "This would be great! At the moment, I'm just starting challenges in order to save them. But this means the My Challenges section is overflowing with projects and is hard to manage. Being able to bookmark challenges would be really helpful.",
-                "userId": 1,
-                "replies": []
-            }
-        ]
+        "comments": 1
     },
     {
         "id": 11,
@@ -222,7 +109,7 @@ const initialState = [
         "status": "in-progress",
         "description": "Screenshots of solutions with animations don’t display correctly.",
         "userId": 8,
-        "comments": []
+        "comments": 0
     },
     {
         "id": 12,
@@ -232,21 +119,7 @@ const initialState = [
         "status": "live",
         "description": "Small animations at specific points can add delight.",
         "userId": 5,
-        "comments": [
-            {
-                "id": 15,
-                "content": "I'd love to see this! It always makes me so happy to see little details like these on websites.",
-                "userId": 9,
-                "replies": [
-                    {
-                        "id": nanoid(),
-                        "content": "Me too! I'd also love to see celebrations at specific points as well. It would help people take a moment to celebrate their achievements!",
-                        "replyingToUserId": 9,
-                        "userId": 1
-                    }
-                ]
-            }
-        ]
+        "comments": 2
     }
 ]
 
@@ -266,19 +139,17 @@ export const suggestionsSlice = createSlice({
                 existingSuggestion.upvotes--;
             }
         },
-        commentAdded(state, action) {
-            const { currentSuggestionId, newComment } = action.payload;
-        
-            const existingSuggestion = state.find(el => el.id === currentSuggestionId);
+        commentCounted(state, action) {
+            const existingSuggestion = state.find(el => el.id === action.payload);
 
             if (existingSuggestion) {
-                existingSuggestion.comments.push(newComment);
+                existingSuggestion.comments++;
             }
-        }
+        },
     }
 })
 
-export const { suggestionUpvoted, removeSuggestionUpvoted, commentAdded } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;
 

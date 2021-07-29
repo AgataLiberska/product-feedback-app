@@ -1,5 +1,5 @@
 import React from 'react';
-import { countComments } from '../../utils/helperFunctions';
+import { useSelector } from 'react-redux';
 
 import CommentDetails from './CommentDetails';
 
@@ -7,15 +7,17 @@ import { CommentsListContainer, CommentsCount } from './CommentsListStyles';
 
 const CommentsList = ({suggestion}) => {
 
-    const renderedComments = suggestion.comments.map(comment => {
+    const comments = useSelector(state => state.comments.filter(comm => comm.suggestionId === suggestion.id &&!comm.replyingToCommentId))
+    
+    const renderedComments = comments.map(comment => {
         return (
-            <CommentDetails key={`${suggestion.id}.${comment.id}`} comment={comment}/>)
+            <CommentDetails key={`${comment.id}`} comment={comment}/>)
     })    
 
     return (
         <CommentsListContainer>
             <CommentsCount>
-                {countComments(suggestion)} Comments
+                {suggestion.comments} Comments
             </CommentsCount>
             {renderedComments}
         </CommentsListContainer>

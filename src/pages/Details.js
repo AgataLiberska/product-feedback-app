@@ -6,10 +6,10 @@ import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
 import SuggestionExcerpt from '../features/suggestions/SuggestionExcerpt';
 import CommentsList from '../features/comments/CommentsList';
 import AddCommentForm from '../features/comments/AddCommentForm';
+import GoBack from '../reusable/GoBackLink';
 
-import BackArrow from '../assets/shared/icon-arrow-left.svg';
 
-import { DetailsPageWrapper, DetailsMenu, GoBackLink, EditFeedbackBtn } from './DetailsPageStyles';
+import { DetailsPageWrapper, DetailsMenu, EditFeedbackBtn } from './DetailsPageStyles';
 import { getCurrentUser } from '../features/users/usersSlice';
 
 
@@ -27,10 +27,7 @@ const Details = ({match}) => {
     return (
         <DetailsPageWrapper>
             <DetailsMenu>
-                <GoBackLink to='/'>
-                    <img src={BackArrow} alt='' />
-                    Go Back
-                </GoBackLink>
+                <GoBack />
                 { isAuthor ? 
                 <EditFeedbackBtn to={`/productRequests/${suggestionId}/edit`}>
                     Edit Feedback

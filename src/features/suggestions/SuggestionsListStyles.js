@@ -45,13 +45,21 @@ export const SuggestionsHeading = styled.h1`
 
 `
 
+export const SuggestionSortContainer = styled.div`
+    display: flex;
+    align-items:center;
+    
+`
+
 export const SortLabel = styled.label`
     padding-right: 0.25rem;
     font-size: 0.75rem;
     color: var(--white);
+    white-space: nowrap;
 `
 
-export const SortSelect = styled.select`
+export const SortSelect = styled.select` 
+    padding: initial;
     background-color: var(--dark-grey);
     border: 0;
     font-size: 0.75rem;

@@ -44,6 +44,47 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     }
 
+    input, textarea, select {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.625rem;
+        background-color: var(--background-color);
+        transition: border-color 0.3s ease;
+        font-size: 0.8125rem;
+        color: var(--dark-grey);
+
+        &:focus {
+            outline: 0;
+            border: 1px solid var(--dakr-blue);
+        }
+
+        &::placeholder {
+            color: var(--light-grey);
+        }
+
+        @media screen and (min-width: 500px) {
+            font-size: 1rem;
+            padding: 1rem 1.5rem;  
+        }
+    }
+
+    button {
+        padding: 0.625rem 1rem;
+        border-radius: 0.625rem;
+        border: 0;
+        font-size: 0.75rem;    
+        font-weight: 700;
+        color: var(--white);
+        white-space: nowrap;
+
+        @media screen and (min-width: 768px) {
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+        }
+    }
+
 
 `;
 

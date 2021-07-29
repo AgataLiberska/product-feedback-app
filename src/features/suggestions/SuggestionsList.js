@@ -6,7 +6,7 @@ import Lightbulb from '../../assets/suggestions/icon-suggestions.svg';
 import AddSuggestionBtn from './AddSuggestionBtn';
 import NoSuggestions from './NoSuggestions';
 
-import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsListStyles';
+import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SuggestionSortContainer, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsListStyles';
 
 const SuggestionsList = () => {
     const suggestions = useSelector(state => state.suggestions);
@@ -62,7 +62,7 @@ const SuggestionsList = () => {
                         <img src={Lightbulb} alt=""/>
                         {filteredSuggestions.length} Suggestions
                     </SuggestionsHeading>
-                    <div>
+                    <SuggestionSortContainer>
                         <SortLabel htmlFor="sort">
                             Sort by:
                         </SortLabel>
@@ -72,7 +72,7 @@ const SuggestionsList = () => {
                             <option value="most-comments">Most Comments</option>
                             <option value="least-comments">Least Comments</option>
                         </SortSelect>
-                    </div>
+                    </SuggestionSortContainer>
                 </SuggestionHeadingSortWrapper>
                 
                 <AddSuggestionBtn to={'/productRequests/new'}>+ Add Feedback</AddSuggestionBtn>

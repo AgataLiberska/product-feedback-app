@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 
-import { getCurrentUser, getUserById } from '../users/usersSlice';
+import { getUserById } from '../users/usersSlice';
 
 import CommentReply from './CommentReply';
 import AddReplyForm from './AddReplyForm';
 
 // styled components
-import { CommentContainer, AuthorInfo, AuthorImage, AuthorDetails,AuthorName, AuthorUsername, ReplyButton, CommentText , ReplyFormContainer} from './CommentDetailsStyles';
-import { TextArea, SubmitButton } from './AddCommentFormStyles';
-
+import { CommentContainer, AuthorInfo, AuthorImage, AuthorDetails,AuthorName, AuthorUsername, ReplyButton, CommentText } from './CommentDetailsStyles';
 
 
 const CommentDetails = ({comment}) => {
@@ -19,17 +17,11 @@ const CommentDetails = ({comment}) => {
     const replies = useSelector(state => state.comments.filter(comm => comm.replyingToCommentId === comment.id));
 
     const [replyFormVisible, setReplyFormVisible] = useState(false);
-    
 
-    const dispatch = useDispatch();
 
     const onReplyClick = () => {
         setReplyFormVisible(true);
     }
-
-    
-
-
 
     let renderedReplies = null; 
 

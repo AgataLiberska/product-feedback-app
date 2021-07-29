@@ -15,7 +15,7 @@ const AddReplyForm = ({replyingTo}) => {
     const originalCommentAuthor = useSelector(state => getUserById(state, replyingTo.userId))
     const dispatch = useDispatch();
 
-    const [replyText, setReplyText] = useState("");
+    const [replyText, setReplyText] = useState(``);
 
     const onReplyTextChange = e => setReplyText(e.target.value);
 

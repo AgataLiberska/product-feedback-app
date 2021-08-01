@@ -4,6 +4,7 @@ import GlobalStyle from './GlobalStyle';
 import Home from './pages/Home';
 import Details from './pages/Details';
 import NewFeedback from './pages/NewFeedback';
+import EditFeedback from './pages/EditFeedback';
 
 const App = () => {
     return (
@@ -24,6 +25,11 @@ const App = () => {
                     exact
                     path='/productRequests/:requestId'
                     component={Details}
+                />
+                <Route 
+                    exact
+                    path='/productRequests/:requestId/edit'
+                    component={EditFeedback}    
                 />
                 <Redirect to='/' />
             </Switch>

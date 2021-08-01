@@ -32,3 +32,7 @@ export const SubmitButton = styled.button`
 export const CancelButton = styled.button`
     background-color: var(--dark-grey-blue);
 `
+
+export const DeleteButton = styled.button`
+    background-color: var(--red);
+`

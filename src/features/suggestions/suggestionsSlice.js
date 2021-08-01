@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = [
     {
@@ -146,10 +146,29 @@ export const suggestionsSlice = createSlice({
                 existingSuggestion.comments++;
             }
         },
+        suggestionAdded: {
+            reducer(state, action) {
+                state.push(action.payload);
+            },
+            prepare(title, category, status, description, userId) {
+                return {
+                    payload: {
+                        id: nanoid(),
+                        title, 
+                        category,
+                        upvotes: 0,
+                        status: status ? status : 'suggestion',
+                        description,
+                        userId, 
+                        comments: 0,
+                    }
+                }
+            }
+        }
     }
 })
 
-export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted, suggestionAdded } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;
 

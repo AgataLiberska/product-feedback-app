@@ -23,7 +23,7 @@ const SuggestionsList = () => {
     // if filter is applied, only display relevant category
     // and don't do anything on state, create copy
     
-    const filteredSuggestions = (category && category.name !== 'all') ? suggestions.slice().filter(item => item.category === category.name.toLowerCase()) : suggestions.slice();
+    const filteredSuggestions = (category && category.name !== 'all') ? suggestions.slice().filter(item => item.category.toLowerCase() === category.name.toLowerCase()) : suggestions.slice();
 
     // Now we need to sort but only filtered suggestions
     let sortedSuggestions;

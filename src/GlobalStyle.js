@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --medium-grey: #647196;
         --dark-grey: #373f68;
         --white: #fff;
+        --red: #D73737;
         --primary-btn: #ad1fea;
         --planned-color: #f49f85;
         --in-progress-color: #ad1fea;
@@ -57,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
 
         &:focus {
             outline: 0;
-            border: 1px solid var(--dakr-blue);
+            border: 1px solid var(--dark-blue);
         }
 
         &::placeholder {
@@ -68,6 +69,10 @@ const GlobalStyle = createGlobalStyle`
             font-size: 1rem;
             padding: 1rem 1.5rem;  
         }
+    }
+
+    select, option {
+        text-transform: capitalize;
     }
 
     button {

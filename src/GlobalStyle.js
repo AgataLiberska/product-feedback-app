@@ -83,6 +83,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 700;
         color: var(--white);
         white-space: nowrap;
+        cursor: pointer;
 
         @media screen and (min-width: 768px) {
             font-size: 0.875rem;

@@ -164,11 +164,22 @@ export const suggestionsSlice = createSlice({
                     }
                 }
             }
+        },
+        suggestionEdited(state, action) {
+            const {suggestionId, title, category, status, description, userId} = action.payload;
+            const existingSuggestion = state.find(el => el.id === +suggestionId);
+
+            if (existingSuggestion && existingSuggestion.userId === userId) {
+                existingSuggestion.title = title;
+                existingSuggestion.category = category;
+                existingSuggestion.status = status;
+                existingSuggestion.description = description;
+            }
         }
     }
 })
 
-export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted, suggestionAdded } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted, suggestionAdded, suggestionEdited } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;
 

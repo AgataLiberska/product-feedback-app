@@ -16,7 +16,7 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
     
     const renderedCategories = categories.map(cat => {
         return (
-            <option value={cat.name}>{cat.name}</option>
+            <option key={cat.name} value={cat.name}>{cat.name}</option>
         )
     })
 
@@ -107,10 +107,10 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                 </FormControl>
                 <ButtonContainer>
                     { status ? 
-                        <DeleteButton>Delete</DeleteButton>
+                        <DeleteButton type="button">Delete</DeleteButton>
                     : null }
-                    <CancelButton>Cancel</CancelButton>
-                    <SubmitButton>{submitBtnText}</SubmitButton>
+                    <CancelButton type="button">Cancel</CancelButton>
+                    <SubmitButton type="submit">{submitBtnText}</SubmitButton>
                 </ButtonContainer>
             </form>
         </FormContainer>

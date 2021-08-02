@@ -1,17 +1,48 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
+import { getCurrentUser } from '../features/users/usersSlice';
+import { suggestionEdited } from '../features/suggestions/suggestionsSlice';
+
 import SuggestionForm from '../features/suggestions/SuggestionForm';
-import { FormPageWrapper } from '../features/suggestions/SuggestionFormStyles';
 import GoBack from '../reusable/GoBackLink';
 
-const EditFeedback = () => {
+// styled component
+import { FormPageWrapper } from '../features/suggestions/SuggestionFormStyles';
+
+const EditFeedback = ({match}) => {
+    const suggestionId = match.params.requestId;
+
+    const currentSuggestion = useSelector(state => findSuggestionById(state, suggestionId));
+    const currentUser = useSelector(state => getCurrentUser(state));
+
+    const isAllowed = currentUser.id === currentSuggestion.userId;
+
+    const dispatch = useDispatch()
+
+    const editSuggestion = ({title, category, status, description}) => {
+        dispatch(suggestionEdited({suggestionId, title, category, status, description, userId: currentUser.id}))
+    }
+
     return (
         <FormPageWrapper>
             <header>
-                <GoBack />
+                <GoBack target={`/productRequests/${suggestionId}`}/>
             </header>
-            <SuggestionForm 
+            { isAllowed ?
+                <SuggestionForm 
+                    heading={`Editing '${currentSuggestion.title}'`}
+                    title={currentSuggestion.title}
+                    category={currentSuggestion.category}
+                    description={currentSuggestion.description}
+                    status={currentSuggestion.status}
+                    submitBtnText='Save Changes'
+                    onFormSubmitted={editSuggestion}
+                />
+            : <div>Sorry, you're not authorised to do this.</div>
+        }
 
-            />
         </FormPageWrapper>
     )
 }

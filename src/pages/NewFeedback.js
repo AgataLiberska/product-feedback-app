@@ -14,14 +14,14 @@ const NewFeedback = () => {
     const currentUser = useSelector(state => getCurrentUser(state));
     const dispatch = useDispatch();
 
-    const addNewSuggestion = ({title, category, status, description}) => {
-        dispatch(suggestionAdded(title,category,status,description, currentUser.id))
+    const addNewSuggestion = ({title, category,description}) => {
+        dispatch(suggestionAdded(title,category,description, currentUser.id))
     }
 
     return (
         <FormPageWrapper>
             <header>
-                <GoBack />
+                <GoBack target='/productRequests'/>
             </header>
             <SuggestionForm 
                 heading='Create New Feedback'

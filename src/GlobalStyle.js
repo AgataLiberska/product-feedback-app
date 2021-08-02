@@ -9,12 +9,15 @@ const GlobalStyle = createGlobalStyle`
         --medium-blue: #CFD7FF;
         --light-blue: #f2f4ff;
         --dark-grey-blue: #3A4374;
+        --dark-grey-blue-hover: #656EA3;
         --light-grey: #8C92B3;
         --medium-grey: #647196;
         --dark-grey: #373f68;
         --white: #fff;
         --red: #D73737;
+        --red-hover: #E98888;
         --primary-btn: #ad1fea;
+        --primary-btn-hover: #C75AF6;
         --planned-color: #f49f85;
         --in-progress-color: #ad1fea;
         --live-color: #62bcfa;
@@ -89,6 +92,7 @@ const GlobalStyle = createGlobalStyle`
         color: var(--white);
         white-space: nowrap;
         cursor: pointer;
+        transition: background-color 0.3s ease;
 
         @media screen and (min-width: 768px) {
             font-size: 0.875rem;

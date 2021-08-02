@@ -27,6 +27,10 @@ export const TextArea = styled.textarea`
 
 export const SubmitButton = styled.button`
     background-color: var(--primary-btn);
+
+    &:hover {
+        background-color: var(--primary-btn-hover);
+    }
 `
 
 export const CancelButton = styled(Link)`
@@ -39,6 +43,11 @@ export const CancelButton = styled(Link)`
     white-space: nowrap;
     cursor: pointer;
     text-align: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--dark-grey-blue-hover);
+    }
 
     @media screen and (min-width: 768px) {
         font-size: 0.875rem;
@@ -48,4 +57,8 @@ export const CancelButton = styled(Link)`
 
 export const DeleteButton = styled.button`
     background-color: var(--red);
+
+    &:hover {
+        background-color: var(--red-hover);
+    }
 `

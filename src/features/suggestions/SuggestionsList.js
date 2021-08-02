@@ -9,8 +9,16 @@ import NoSuggestions from './NoSuggestions';
 import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SuggestionSortContainer, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsListStyles';
 
 const SuggestionsList = () => {
-    const suggestions = useSelector(state => state.suggestions);
-    const category = useSelector(state => state.categories.find(cat => cat.selected === true))
+    const category = useSelector(state => state.categories.find(cat => cat.selected === true));
+
+    const suggestions = useSelector(state => {
+        if (category.name === 'all') {
+            return state.suggestions;
+        }
+        else {
+            return state.suggestions.filter(suggestion => suggestion.category === category.name);
+        }
+    });
 
     const [sortBy, setSortBy] = useState('most-upvotes');
 
@@ -18,27 +26,22 @@ const SuggestionsList = () => {
     const onSortChange = e => {
         setSortBy(e.target.value);
     }
-    // This logic should probably be done on API level?
 
-    // if filter is applied, only display relevant category
-    // and don't do anything on state, create copy
-    
-    const filteredSuggestions = (category && category.name !== 'all') ? suggestions.slice().filter(item => item.category.toLowerCase() === category.name.toLowerCase()) : suggestions.slice();
 
     // Now we need to sort but only filtered suggestions
     let sortedSuggestions;
 
     if (sortBy === 'most-upvotes') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.upvotes - a.upvotes);
+        sortedSuggestions = suggestions.slice().sort((a,b) => b.upvotes - a.upvotes);
     } 
     else if (sortBy === 'least-upvotes') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
+        sortedSuggestions = suggestions.slice().sort((a,b) => a.upvotes - b.upvotes);
     }
     else if (sortBy === 'most-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => b.comments - a.comments);
+        sortedSuggestions = suggestions.slice().sort((a,b) => b.comments - a.comments);
     }
     else if (sortBy === 'least-comments') {
-        sortedSuggestions = filteredSuggestions.slice().sort((a,b) => a.comments - b.comments);
+        sortedSuggestions = suggestions.slice().sort((a,b) => a.comments - b.comments);
     }
 
     //great, now we want to display no suggestions screen if there's nothing
@@ -60,7 +63,7 @@ const SuggestionsList = () => {
                 <SuggestionHeadingSortWrapper>
                     <SuggestionsHeading>
                         <img src={Lightbulb} alt=""/>
-                        {filteredSuggestions.length} Suggestions
+                        {suggestions.length} Suggestions
                     </SuggestionsHeading>
                     <SuggestionSortContainer>
                         <SortLabel htmlFor="sort">

@@ -11,4 +11,8 @@ export const AddFeedbackBtn = styled(Link)`
     font-weight: bold;
     color: var(--white);
     line-height: 1.125rem;
+
+    &:hover {
+        background-color: var(--primary-btn-hover);
+    }
 `

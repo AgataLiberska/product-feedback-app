@@ -33,7 +33,10 @@ export const FormControl = styled.div`
 
 export const FormInput = styled.input`
     border: ${props => (props.showError ? '1px solid #D73737' : '1px solid var(--background-color)')};
-}
+
+    &:focus {
+        border: ${props => (props.showError ? '1px solid var(--red)' : '1px solid var(--dark-blue)')}
+    }
 `
 
 
@@ -61,6 +64,10 @@ export const FormLabelHeading = styled.span`
 export const FeedbackFormTextArea = styled.textarea`
     border: ${props => (props.showError ? '1px solid #D73737' : '1px solid var(--background-color)')};}
     height: 7.5rem;
+
+    &:focus {
+        border: ${props => (props.showError ? '1px solid var(--red)' : '1px solid var(--dark-blue)')}
+    }
 `
 
 export const FormError = styled.p`

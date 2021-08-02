@@ -81,7 +81,7 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                         onChange={onTitleChange}
                         showError={titleError}
                     />
-                    { descriptionError ? 
+                    { titleError ? 
                     <FormError>Can't be empty</FormError>
                     : null }
                 </FormControl>

@@ -14,7 +14,7 @@ export const SuggestionCard = styled.article`
     background-color: var(--white);
     border-radius: 0.625rem;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 500px) {
         grid-template-columns: 2.5rem auto 3rem;
         grid-template-areas: 
             "upvote heading comments"
@@ -101,7 +101,7 @@ export const UpvoteButton = styled.button`
         background-color: var(--medium-blue);
     }
     
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 500px) {
         display: flex;
         flex-direction: column;
         align-items: center;

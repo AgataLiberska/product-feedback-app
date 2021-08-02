@@ -9,11 +9,15 @@ const GlobalStyle = createGlobalStyle`
         --medium-blue: #CFD7FF;
         --light-blue: #f2f4ff;
         --dark-grey-blue: #3A4374;
+        --dark-grey-blue-hover: #656EA3;
         --light-grey: #8C92B3;
         --medium-grey: #647196;
         --dark-grey: #373f68;
         --white: #fff;
+        --red: #D73737;
+        --red-hover: #E98888;
         --primary-btn: #ad1fea;
+        --primary-btn-hover: #C75AF6;
         --planned-color: #f49f85;
         --in-progress-color: #ad1fea;
         --live-color: #62bcfa;
@@ -42,6 +46,58 @@ const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
+    }
+
+    input, textarea, select {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid var(--background-color);
+        border-radius: 0.625rem;
+        background-color: var(--background-color);
+        transition: border-color 0.3s ease;
+        font-size: 0.8125rem;
+        color: var(--dark-grey);
+
+        &:focus {
+            outline: 0;
+            border: 1px solid var(--dark-blue);
+        }
+
+        &::placeholder {
+            color: var(--light-grey);
+        }
+
+        @media screen and (min-width: 500px) {
+            font-size: 1rem;
+            padding: 1rem 1.25rem;  
+        }
+    }
+
+    input, textarea {
+        cursor: pointer;
+    }
+    
+    select, option {
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    button {
+        padding: 0.625rem 1rem;
+        border-radius: 0.625rem;
+        border: 0;
+        font-size: 0.75rem;    
+        font-weight: 700;
+        color: var(--white);
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        @media screen and (min-width: 768px) {
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+        }
     }
 
 

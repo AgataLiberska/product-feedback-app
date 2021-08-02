@@ -86,7 +86,17 @@ export const ButtonContainer = styled.div`
     gap: 1rem;
 
     @media screen and (min-width: 500px) {
-        flex-direction: row;
+        flex-direction: row-reverse;
         justify-content: flex-end;
+    }
+`
+
+export const DeleteButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 500px) {
+        flex-direction: row;
+        width: 100%;
     }
 `

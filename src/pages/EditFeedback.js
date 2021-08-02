@@ -18,6 +18,7 @@ const EditFeedback = ({match}) => {
     const history = useHistory();
 
     const currentSuggestion = useSelector(state => findSuggestionById(state, suggestionId));
+
     const currentUser = useSelector(state => getCurrentUser(state));
 
     const isAllowed = currentUser.id === currentSuggestion.userId;
@@ -49,6 +50,7 @@ const EditFeedback = ({match}) => {
                     status={currentSuggestion.status}
                     submitBtnText='Save Changes'
                     onFormSubmitted={editSuggestion}
+                    goBack={`/productRequests/${suggestionId}`}
                 />
             : <div>Sorry, you're not authorised to do this.</div>
         }

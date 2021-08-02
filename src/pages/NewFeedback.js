@@ -39,6 +39,7 @@ const NewFeedback = () => {
                 description=''
                 submitBtnText='Add Feedback'
                 onFormSubmitted={addNewSuggestion}
+                goBack='/productRequests'
             />
             
         </FormPageWrapper>

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 
-import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError } from './SuggestionFormStyles';
+import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError, DeleteButtonWrapper } from './SuggestionFormStyles';
 
 import { SubmitButton, CancelButton, DeleteButton } from '../../reusable/reusableStyles';
 
-const SuggestionForm = ({heading, title, category, status, description, submitBtnText, onFormSubmitted}) => {
+const SuggestionForm = ({heading, title, category, status, description, submitBtnText, onFormSubmitted, goBack}) => {
 
     const [titleValue, setTitleValue] = useState(title);
     const [categoryValue, setCategoryValue] = useState(category);
@@ -141,11 +141,13 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                     : null}
                 </FormControl>
                 <ButtonContainer>
-                    { status ? 
-                        <DeleteButton type="button">Delete</DeleteButton>
-                    : null }
-                    <CancelButton type="button">Cancel</CancelButton>
                     <SubmitButton type="submit">{submitBtnText}</SubmitButton>
+                    <CancelButton to={goBack}>Cancel</CancelButton>
+                    { status ? 
+                        <DeleteButtonWrapper>
+                            <DeleteButton type="button">Delete</DeleteButton>
+                        </DeleteButtonWrapper>
+                    : null }
                 </ButtonContainer>
             </form>
         </FormContainer>

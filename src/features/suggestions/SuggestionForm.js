@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 
-import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FeedbackFormTextArea, ButtonContainer } from './SuggestionFormStyles';
+import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError } from './SuggestionFormStyles';
 
 import { SubmitButton, CancelButton, DeleteButton } from '../../reusable/reusableStyles';
 
@@ -11,6 +11,8 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
     const [categoryValue, setCategoryValue] = useState(category);
     const [statusValue, setStatusValue] = useState(status);
     const [descriptionValue, setDescriptionValue] = useState(description);
+    const [titleError, setTitleError] = useState(false);
+    const [descriptionError, setDescriptionError] = useState(false);
 
     const categories = useSelector(state => state.categories);
     
@@ -20,17 +22,43 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
         )
     })
 
+    const onTitleChange = e => {
+        if (titleValue.trim()) {
+            setTitleError(false)
+        }
+
+        setTitleValue(e.target.value);
+    }
+
+    const onDescriptionChange = e => {
+        if (descriptionValue.trim()) {
+            setDescriptionError(false);
+        }
+
+        setDescriptionValue(e.target.value)
+    }
+
     const onSubmitForm = e => {
         e.preventDefault();
 
-        const newSuggestion = {
-            title: titleValue,
-            category: categoryValue,
-            status: statusValue,
-            description: descriptionValue,
+        if (!titleValue.trim()) {
+            setTitleError(true);
         }
 
-        onFormSubmitted(newSuggestion);
+        if (!descriptionValue.trim()) {
+            setDescriptionError(true);
+        }
+
+        if (titleValue && descriptionValue) {
+            const newSuggestion = {
+                title: titleValue,
+                category: categoryValue,
+                status: statusValue,
+                description: descriptionValue,
+            }
+    
+            onFormSubmitted(newSuggestion);
+        }
     }
     
     return (
@@ -46,12 +74,16 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                         </FormLabelHeading>
                         Add a short, descriptive headline
                     </FormLabel>
-                    <input 
+                    <FormInput 
                         type="text" 
                         id="title" 
                         value={titleValue} 
-                        onChange={e => setTitleValue(e.target.value)}
+                        onChange={onTitleChange}
+                        showError={titleError}
                     />
+                    { descriptionError ? 
+                    <FormError>Can't be empty</FormError>
+                    : null }
                 </FormControl>
                 <FormControl>
                     <FormLabel htmlFor="category">
@@ -102,8 +134,11 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                     <FeedbackFormTextArea 
                         id="description"
                         value={descriptionValue}
-                        onChange={e => setDescriptionValue(e.target.value)}    
+                        onChange={onDescriptionChange}    
+                        showError={descriptionError}
                     />
+                    { descriptionError ?                     <FormError>Can't be empty</FormError> 
+                    : null}
                 </FormControl>
                 <ButtonContainer>
                     { status ? 

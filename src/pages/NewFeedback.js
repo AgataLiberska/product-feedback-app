@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import GoBack from '../reusable/GoBackLink';
 import SuggestionForm from '../features/suggestions/SuggestionForm';
 
@@ -13,9 +14,17 @@ import { FormPageWrapper} from '../features/suggestions/SuggestionFormStyles';
 const NewFeedback = () => {
     const currentUser = useSelector(state => getCurrentUser(state));
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const addNewSuggestion = ({title, category,description}) => {
-        dispatch(suggestionAdded(title,category,description, currentUser.id))
+        dispatch(suggestionAdded(
+            title,
+            category,
+            description,
+            currentUser.id
+        ));
+
+        history.push('/');
     }
 
     return (

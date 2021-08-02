@@ -28,6 +28,12 @@ export const FormControl = styled.div`
     &:last-of-type {
         margin-bottom: 2.5rem;
     }
+
+`
+
+export const FormInput = styled.input`
+    border: ${props => (props.showError ? '1px solid #D73737' : '1px solid var(--background-color)')};
+}
 `
 
 
@@ -53,7 +59,18 @@ export const FormLabelHeading = styled.span`
 `
 
 export const FeedbackFormTextArea = styled.textarea`
+    border: ${props => (props.showError ? '1px solid #D73737' : '1px solid var(--background-color)')};}
     height: 7.5rem;
+`
+
+export const FormError = styled.p`
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    color: var(--red);
+
+    @media screen and (min-width: 500px) {
+        font-size: 0.875rem;
+    }
 `
 
 export const ButtonContainer = styled.div`

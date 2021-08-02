@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
         width: 100%;
         padding: 1rem;
-        border: 1px solid transparent;
+        border: 1px solid var(--background-color);
         border-radius: 0.625rem;
         background-color: var(--background-color);
         transition: border-color 0.3s ease;
@@ -67,12 +67,17 @@ const GlobalStyle = createGlobalStyle`
 
         @media screen and (min-width: 500px) {
             font-size: 1rem;
-            padding: 1rem 1.5rem;  
+            padding: 1rem 1.25rem;  
         }
     }
 
+    input, textarea {
+        cursor: pointer;
+    }
+    
     select, option {
         text-transform: capitalize;
+        cursor: pointer;
     }
 
     button {

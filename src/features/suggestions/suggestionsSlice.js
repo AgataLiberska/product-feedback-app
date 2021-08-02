@@ -175,11 +175,15 @@ export const suggestionsSlice = createSlice({
                 existingSuggestion.status = status;
                 existingSuggestion.description = description;
             }
+        },
+        suggestionDeleted(state, action) {
+            const existingSuggestionIndex = state.findIndex(el => el.id === +action.payload);
+            state.splice(existingSuggestionIndex, 1);
         }
     }
 })
 
-export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted, suggestionAdded, suggestionEdited } = suggestionsSlice.actions;
+export const { suggestionUpvoted, removeSuggestionUpvoted, commentCounted, suggestionAdded, suggestionEdited, suggestionDeleted } = suggestionsSlice.actions;
 
 export default suggestionsSlice.reducer;
 

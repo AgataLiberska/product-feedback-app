@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import { findSuggestionById } from '../features/suggestions/suggestionsSlice';
 import { getCurrentUser } from '../features/users/usersSlice';
-import { suggestionEdited } from '../features/suggestions/suggestionsSlice';
+import { suggestionEdited, suggestionDeleted } from '../features/suggestions/suggestionsSlice';
 
 import SuggestionForm from '../features/suggestions/SuggestionForm';
 import GoBack from '../reusable/GoBackLink';
@@ -36,6 +36,12 @@ const EditFeedback = ({match}) => {
         history.push(`/productRequests/${suggestionId}`);
     }
 
+    const deleteSuggestion = () => {
+        dispatch(suggestionDeleted(currentSuggestion.id));
+
+        history.push('/productRequests')
+    }
+
     return (
         <FormPageWrapper>
             <header>
@@ -51,6 +57,7 @@ const EditFeedback = ({match}) => {
                     submitBtnText='Save Changes'
                     onFormSubmitted={editSuggestion}
                     goBack={`/productRequests/${suggestionId}`}
+                    onDelete={deleteSuggestion}
                 />
             : <div>Sorry, you're not authorised to do this.</div>
         }

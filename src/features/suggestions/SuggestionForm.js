@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 
+
+// styled components
 import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError, DeleteButtonWrapper } from './SuggestionFormStyles';
 
 import { SubmitButton, CancelButton, DeleteButton } from '../../reusable/reusableStyles';
 
-const SuggestionForm = ({heading, title, category, status, description, submitBtnText, onFormSubmitted, goBack}) => {
+const SuggestionForm = ({ heading, title, category, status, description, submitBtnText, onFormSubmitted, goBack, onDelete }) => {
 
     const [titleValue, setTitleValue] = useState(title);
     const [categoryValue, setCategoryValue] = useState(category);
@@ -59,6 +61,11 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
     
             onFormSubmitted(newSuggestion);
         }
+    }
+
+    const onDeleteBtnClicked = (e) => {
+        e.preventDefault();
+        onDelete();
     }
     
     return (
@@ -145,7 +152,7 @@ const SuggestionForm = ({heading, title, category, status, description, submitBt
                     <CancelButton to={goBack}>Cancel</CancelButton>
                     { status ? 
                         <DeleteButtonWrapper>
-                            <DeleteButton type="button">Delete</DeleteButton>
+                            <DeleteButton onClick={onDeleteBtnClicked}>Delete</DeleteButton>
                         </DeleteButtonWrapper>
                     : null }
                 </ButtonContainer>

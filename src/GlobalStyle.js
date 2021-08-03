@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import downArrow from './assets/shared/icon-arrow-down.svg';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -81,6 +82,13 @@ const GlobalStyle = createGlobalStyle`
     select, option {
         text-transform: capitalize;
         cursor: pointer;
+    }
+
+    select {
+        appearance: none;
+        background-image: url('${downArrow}');
+        background-repeat: no-repeat;
+        background-position: top 26px right 1.25rem;
     }
 
     button {

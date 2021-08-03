@@ -8,6 +8,7 @@ import { suggestionEdited, suggestionDeleted } from '../features/suggestions/sug
 
 import SuggestionForm from '../features/suggestions/SuggestionForm';
 import GoBack from '../reusable/GoBackLink';
+import NotAuthorised from '../reusable/NotAuthorised';
 
 // styled component
 import { FormPageWrapper } from '../features/suggestions/SuggestionFormStyles';
@@ -59,7 +60,7 @@ const EditFeedback = ({match}) => {
                     goBack={`/productRequests/${suggestionId}`}
                     onDelete={deleteSuggestion}
                 />
-            : <div>Sorry, you're not authorised to do this.</div>
+            : <NotAuthorised />
         }
 
         </FormPageWrapper>

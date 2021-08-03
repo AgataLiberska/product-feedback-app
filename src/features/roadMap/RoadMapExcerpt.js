@@ -19,7 +19,7 @@ const RoadMapExcerpt = () => {
         <RoadMapExcerptContainer>
             <ExcerptTop>
                 <ExcerptHeading>Roadmap</ExcerptHeading>
-                <LinkToRoadMap to='/' >View</LinkToRoadMap>
+                <LinkToRoadMap to='/roadMap' >View</LinkToRoadMap>
             </ExcerptTop>
             <ul>
                 <ExcerptCategory>Planned <ExcerptCategoryNumber>{countHowMany('planned')}</ExcerptCategoryNumber></ExcerptCategory>

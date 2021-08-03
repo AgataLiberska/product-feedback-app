@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Details from './pages/Details';
 import NewFeedback from './pages/NewFeedback';
 import EditFeedback from './pages/EditFeedback';
+import RoadMap from './pages/RoadMap';
 
 const App = () => {
     return (
@@ -30,6 +31,11 @@ const App = () => {
                     exact
                     path='/productRequests/:requestId/edit'
                     component={EditFeedback}    
+                />
+                <Route 
+                    exact
+                    path='/roadMap'
+                    component={RoadMap}
                 />
                 <Redirect to='/' />
             </Switch>

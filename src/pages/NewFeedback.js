@@ -30,7 +30,7 @@ const NewFeedback = () => {
     return (
         <FormPageWrapper>
             <header>
-                <GoBack target='/productRequests'/>
+                <GoBack target='/productRequests' darkText={true}/>
             </header>
             <SuggestionForm 
                 heading='Create New Feedback'

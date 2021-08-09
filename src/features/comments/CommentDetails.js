@@ -12,15 +12,16 @@ import { CommentContainer, AuthorInfo, AuthorImage, AuthorDetails,AuthorName, Au
 
 
 const CommentDetails = ({comment}) => {
+    const [replyFormVisible, setReplyFormVisible] = useState(false);
+    const [replyingToComment, setReplyingToComment ] = useState(null);
+
     const commentAuthor = useSelector(state => getUserById(state, comment.userId));
-    
     const replies = useSelector(state => state.comments.filter(comm => comm.replyingToCommentId === comment.id));
 
-    const [replyFormVisible, setReplyFormVisible] = useState(false);
 
-
-    const onReplyClick = () => {
+    const onReplyClick = (comment) => {
         setReplyFormVisible(true);
+        setReplyingToComment(comment);
     }
 
     let renderedReplies = null; 
@@ -28,7 +29,7 @@ const CommentDetails = ({comment}) => {
     if (replies.length > 0) {
         renderedReplies = replies.map(reply => {
             return (
-                <CommentReply reply={reply}  key={reply.id} />
+                <CommentReply reply={reply}  key={reply.id} onReply={onReplyClick}/>
             )
         })
     }
@@ -42,18 +43,22 @@ const CommentDetails = ({comment}) => {
                     <AuthorName>{commentAuthor.name}</AuthorName>
                     <AuthorUsername>@{commentAuthor.username}</AuthorUsername>
                 </AuthorDetails>
-                <ReplyButton onClick={onReplyClick}>Reply</ReplyButton>
+                <ReplyButton onClick={() => onReplyClick(comment)}>Reply</ReplyButton>
             </AuthorInfo>
 
             <CommentText>{comment.content}</CommentText>
 
-            { replyFormVisible ? 
-                <AddReplyForm replyingTo={comment} />
-            : null }
-            
             <ul>
                 {renderedReplies}
             </ul>
+
+            { replyFormVisible ? 
+                <AddReplyForm 
+                    replyingTo={replyingToComment} 
+                    nestUnder={comment}
+                />
+            : null }
+
         </CommentContainer>
     )
 }

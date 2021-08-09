@@ -10,7 +10,7 @@ import { commentCounted } from '../suggestions/suggestionsSlice';
 import { ReplyFormContainer } from './AddReplyFormStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
-const AddReplyForm = ({replyingTo}) => {
+const AddReplyForm = ({ replyingTo, nestUnder}) => {
     const currentUser = useSelector(state => getCurrentUser(state));
     const originalCommentAuthor = useSelector(state => getUserById(state, replyingTo.userId))
     const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const AddReplyForm = ({replyingTo}) => {
             userId: currentUser.id,
             suggestionId: replyingTo.suggestionId,
             replyingToUserId: originalCommentAuthor.id,
-            replyingToCommentId: replyingTo.id
+            replyingToCommentId: nestUnder.id
         } 
 
         dispatch(commentAdded(reply));

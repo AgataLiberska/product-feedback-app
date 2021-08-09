@@ -12,7 +12,6 @@ const RoadMapColumn = ({suggestions, heading, tagline, isSelected}) => {
                     showStatus={true}
                     status={suggestion.status}
                 />
-                {console.log(suggestion.status)}
             </li>
 
         )

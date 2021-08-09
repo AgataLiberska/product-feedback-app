@@ -4,10 +4,14 @@ import { getUserById } from '../users/usersSlice';
 
 import { ReplyContainer, AuthorInfo, AuthorImage, AuthorDetails, AuthorName, AuthorUsername, CommentText, ReplyButton, ReplyingToUser } from './CommentDetailsStyles';
 
-const CommentReply = ({reply}) => {
+const CommentReply = ({reply, onReply}) => {
     const author = useSelector(state => getUserById(state, reply.userId));
 
     const replyingTo = useSelector(state => getUserById(state, reply.replyingToUserId));
+
+    const handleReplyClick = () => {
+        onReply(reply);
+    }
 
     return (
         <ReplyContainer>
@@ -17,7 +21,7 @@ const CommentReply = ({reply}) => {
                 <AuthorName>{author.name}</AuthorName>
                 <AuthorUsername>@{author.username}</AuthorUsername>
             </AuthorDetails>
-            <ReplyButton>Reply</ReplyButton>
+            <ReplyButton onClick={handleReplyClick}>Reply</ReplyButton>
             </AuthorInfo>
 
             <CommentText>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CommentsListContainer = styled.ul`
+export const CommentsListContainer = styled.div`
     padding: 1.5rem;
     background-color: var(--white);
     border-radius: 0.625rem;

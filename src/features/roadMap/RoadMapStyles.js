@@ -22,6 +22,13 @@ export const RoadMapItemsWrapper = styled.div`
     height: 100%;
     min-height: 100vh;
     position: relative;
+
+    @media screen and (min-width: 768px) {
+        margin: 1.5rem auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem 0.625rem;
+    }
 `
 
 export const RoadMapStatusGroup = styled.section`
@@ -33,6 +40,12 @@ export const RoadMapStatusGroup = styled.section`
     transform: ${props => props.selected ? 'translateX(0)' : 'translateX(-100vw)'};
     opacity: ${props => props.selected ? '1' : '0'};
     transition: transform 0.5s ease, opacity 0.5s ease;
+
+    @media screen and (min-width: 768px) {
+        position: relative;
+        transform: translateX(0);
+        opacity: 1;
+    }
 `
 
 export const GroupHeading = styled.h2`

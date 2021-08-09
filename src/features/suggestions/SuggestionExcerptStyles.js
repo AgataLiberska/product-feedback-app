@@ -44,12 +44,20 @@ export const StatusCard = styled(SuggestionCard)`
         height: 0.375rem;
         background-color: ${setStatusColor}
     }   
+
+    @media screen and (min-width: 768px) {
+        padding: 1.5rem 1.25rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        padding: 2rem 2rem;
+    }
 `
 
 export const CardHeading = styled.h2`
     grid-area: heading;
     margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     line-height: 1.25rem;
 
     & a {
@@ -64,18 +72,29 @@ export const CardHeading = styled.h2`
     @media screen and (min-width: 768px) {
         margin-bottom: 0.25rem;
     }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 1.125rem;
+        line-height: 1.625rem;
+    }
     
 `
 
 export const CardText = styled.p`
     grid-area: text;
     margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     line-height: 1.125rem;
     color: var(--medium-grey);
 
     @media screen and (min-width: 768px) {
         margin-bottom: 0.75rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
     }
 ` 
 

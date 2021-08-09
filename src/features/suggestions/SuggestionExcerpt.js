@@ -8,7 +8,7 @@ import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice'
 
 // images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionExcerptStyles';
 
 const ConditionalWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
@@ -49,6 +49,12 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
             wrapIfTrue={children => <StatusCard status={status}>{children}</StatusCard>}
             wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
         >
+            { showStatus ? 
+                <SuggestionStatus status={status}>
+                    {suggestion.status === "planned" ? 'Planned' : suggestion.status === "in-progress" ? 'In Progress' : 'Live'}
+                </SuggestionStatus>
+            : null}
+            
             <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
             <CardText>{suggestion.description}</CardText>
 

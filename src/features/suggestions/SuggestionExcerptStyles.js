@@ -35,6 +35,13 @@ export const ResizeableSuggestionCard = styled(SuggestionCard)`
 `
 
 export const StatusCard = styled(SuggestionCard)`
+    grid-template-areas: 
+        "status status"
+        "heading heading"
+        "text text"
+        "category ."
+        "upvote comments";
+
     &::after {
         content: '';
         position: absolute;
@@ -51,6 +58,34 @@ export const StatusCard = styled(SuggestionCard)`
 
     @media screen and (min-width: 1024px) {
         padding: 2rem 2rem;
+    }
+`
+
+export const SuggestionStatus = styled.p`
+    position: relative;
+    grid-area: status;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 0.5rem;
+        width: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        background-color: ${setStatusColor};
+
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        line-height: 1.5rem; 
     }
 `
 

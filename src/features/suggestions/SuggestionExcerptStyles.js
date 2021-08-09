@@ -181,6 +181,7 @@ export const ResizeableUpvoteButton = styled(UpvoteButton)`
         display: flex;
         flex-direction: column;
         align-items: center;
+        align-self: start;
         width: 2.5rem;
         margin-top: unset;
         padding: 0.875rem 0.5rem 0.5rem;

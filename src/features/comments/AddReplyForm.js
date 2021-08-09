@@ -45,7 +45,7 @@ const AddReplyForm = ({ replyingTo, nestUnder}) => {
         <ReplyFormContainer>
             <TextArea 
                 aria-label="Type your reply here"
-                placeholder="Type your reply here"
+                placeholder={`Type your reply to @${originalCommentAuthor.username} here`}
                 maxLength="250"
                 value={replyText}
                 onChange={onReplyTextChange}

@@ -8,9 +8,9 @@ import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice'
 
 // images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
 
-const CardWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
+const ConditionalWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
 const SuggestionExcerpt = ({ suggestion, showStatus }) => {
     const dispatch = useDispatch()
@@ -44,7 +44,7 @@ const SuggestionExcerpt = ({ suggestion, showStatus }) => {
     
 
     return (
-        <CardWrapper
+        <ConditionalWrapper
             condition={showStatus}
             wrapIfTrue={children => <StatusCard>{children}</StatusCard>}
             wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
@@ -53,16 +53,20 @@ const SuggestionExcerpt = ({ suggestion, showStatus }) => {
             <CardText>{suggestion.description}</CardText>
 
             <CardCategory>{suggestion.category}</CardCategory>
-            <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>
+            <ConditionalWrapper
+                condition={showStatus}
+                wrapIfTrue={children => <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children}</UpvoteButton>}
+                wrapIfFalse={children => <ResizeableUpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children} </ResizeableUpvoteButton>}
+            >
                 <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
-            </UpvoteButton>
+            </ConditionalWrapper>
             <CommentsBtn to={`/productRequests/${suggestion.id}`}>
                 <img src={CommentBubble} alt=""/>
                 {suggestion.comments}
             </CommentsBtn>
             
-        </CardWrapper>
+        </ConditionalWrapper>
     )
 }
 

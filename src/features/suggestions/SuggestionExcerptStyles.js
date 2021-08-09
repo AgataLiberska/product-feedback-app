@@ -27,7 +27,7 @@ export const ResizeableSuggestionCard = styled(SuggestionCard)`
 `
 
 export const StatusCard = styled(SuggestionCard)`
-    
+
 `
 
 export const CardHeading = styled.h2`
@@ -66,7 +66,7 @@ export const CardText = styled.p`
 export const CardCategory = styled.span`
     grid-area: category;
     justify-self: start;
-    margin-bottom: 1rem;
+
     padding: 0.3125rem 1rem;
     background-color: var(--light-blue);
     border-radius: 0.625rem;
@@ -76,14 +76,12 @@ export const CardCategory = styled.span`
     color: var(--dark-blue);
     text-transform: capitalize;
 
-    @media screen and (min-width: 768px) {
-        margin-bottom: 0;
-    }
 `
 
 export const UpvoteButton = styled.button`
     grid-area: upvote;
     justify-self: start;
+    margin-top: 1rem;
     padding: 0.375rem 0.75rem 0.375rem 1rem;
     background-color: ${props => props.isPressed ? "var(--dark-blue)" : "var(--light-blue)"} ;
     border: 0;
@@ -106,12 +104,15 @@ export const UpvoteButton = styled.button`
     &:hover {
         background-color: var(--medium-blue);
     }
-    
+`
+
+export const ResizeableUpvoteButton = styled(UpvoteButton)`
     @media screen and (min-width: 500px) {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 2.5rem;
+        margin-top: unset;
         padding: 0.875rem 0.5rem 0.5rem;
 
         & svg {
@@ -124,6 +125,7 @@ export const UpvoteButton = styled.button`
 export const CommentsBtn = styled(Link)`
     grid-area: comments;
     justify-self: end;
+    align-self: end;
     display: flex;
     align-items: center;
     font-size: 0.75rem;
@@ -134,5 +136,9 @@ export const CommentsBtn = styled(Link)`
     & img {
         display: inline-block;
         margin-right: 0.5rem;
+    }
+
+    @media screen and (min-width: 500px) {
+        align-self: center;
     }
 `

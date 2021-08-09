@@ -16,8 +16,6 @@ export const ReplyFormContainer = styled.form`
     }
 
     @media screen and (min-width: 768px) {
-        padding-left: 4.5rem;
+        padding-left: ${props => props.indented ? '4.5rem' : '7.25rem'};
     }
-
-    
 `

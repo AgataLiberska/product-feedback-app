@@ -10,8 +10,11 @@ import { commentCounted } from '../suggestions/suggestionsSlice';
 import { ReplyFormContainer } from './AddReplyFormStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
-const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm}) => {
+const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm, hasReplies}) => {
     const [replyText, setReplyText] = useState(``);
+    const isFirstReply = hasReplies ? false : true; 
+    console.log(hasReplies);
+    console.log(isFirstReply);
 
     const currentUser = useSelector(state => getCurrentUser(state));
     const originalCommentAuthor = useSelector(state => getUserById(state, replyingTo.userId))
@@ -44,7 +47,7 @@ const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm}) => {
     }
 
     return (
-        <ReplyFormContainer>
+        <ReplyFormContainer indented={isFirstReply}>
             <TextArea 
                 key={replyingTo.id}
                 aria-label="Type your reply here"

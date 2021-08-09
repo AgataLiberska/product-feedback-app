@@ -57,6 +57,7 @@ const CommentDetails = ({comment}) => {
                     replyingTo={replyingToComment} 
                     nestUnder={comment}
                     resetReplyForm={() => setReplyFormVisible(false)}
+                    hasReplies={renderedReplies ? true : false}
                 />
             : null }
 

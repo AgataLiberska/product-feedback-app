@@ -70,7 +70,7 @@ export const ReplyContainer = styled.div`
     padding: 1.5rem 0 0 1.5rem;
 
     @media screen and (min-width: 768px) {
-        padding: 2rem 0 0 2.5rem;
+        padding: 2rem 0 0 2.75rem;
     }
 `
 

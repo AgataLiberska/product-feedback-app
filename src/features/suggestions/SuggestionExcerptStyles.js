@@ -174,6 +174,10 @@ export const UpvoteButton = styled.button`
     &:hover {
         background-color: var(--medium-blue);
     }
+
+    @media screen and (min-width: 1024px) {
+        padding: 0.625rem 0.75rem 0.625rem 1rem;
+    }
 `
 
 export const ResizeableUpvoteButton = styled(UpvoteButton)`

@@ -56,6 +56,7 @@ const CommentDetails = ({comment}) => {
                 <AddReplyForm 
                     replyingTo={replyingToComment} 
                     nestUnder={comment}
+                    resetReplyForm={() => setReplyFormVisible(false)}
                 />
             : null }
 

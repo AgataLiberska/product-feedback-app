@@ -10,12 +10,13 @@ import { commentCounted } from '../suggestions/suggestionsSlice';
 import { ReplyFormContainer } from './AddReplyFormStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
-const AddReplyForm = ({ replyingTo, nestUnder}) => {
+const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm}) => {
+    const [replyText, setReplyText] = useState(``);
+
     const currentUser = useSelector(state => getCurrentUser(state));
     const originalCommentAuthor = useSelector(state => getUserById(state, replyingTo.userId))
-    const dispatch = useDispatch();
 
-    const [replyText, setReplyText] = useState(``);
+    const dispatch = useDispatch();
 
     const onReplyTextChange = e => setReplyText(e.target.value);
 
@@ -39,6 +40,7 @@ const AddReplyForm = ({ replyingTo, nestUnder}) => {
         dispatch(commentCounted(replyingTo.suggestionId));
 
         setReplyText("");
+        resetReplyForm();
     }
 
     return (
@@ -49,6 +51,7 @@ const AddReplyForm = ({ replyingTo, nestUnder}) => {
                 maxLength="250"
                 value={replyText}
                 onChange={onReplyTextChange}
+                autoFocus
             />
             <SubmitButton onClick={onPostReplyClick}>Post Reply</SubmitButton>          
         </ReplyFormContainer>

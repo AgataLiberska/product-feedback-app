@@ -13,7 +13,8 @@ export const SuggestionCard = styled.article`
     padding: 1.5rem;
     background-color: var(--white);
     border-radius: 0.625rem;
-
+`
+export const ResizeableSuggestionCard = styled(SuggestionCard)`
     @media screen and (min-width: 500px) {
         grid-template-columns: 2.5rem auto 3rem;
         grid-template-areas: 
@@ -24,6 +25,11 @@ export const SuggestionCard = styled.article`
         padding: 1.75rem 2rem;
     }
 `
+
+export const StatusCard = styled(SuggestionCard)`
+    
+`
+
 export const CardHeading = styled.h2`
     grid-area: heading;
     margin-bottom: 0.5rem;

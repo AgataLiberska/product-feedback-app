@@ -2,13 +2,17 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+//action creators + seletor methods
 import { suggestionUpvoted, removeSuggestionUpvoted } from './suggestionsSlice';
 import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice';
 
+// images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
 
-const SuggestionExcerpt = ({ suggestion }) => {
+const CardWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
+
+const SuggestionExcerpt = ({ suggestion, showStatus }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => getCurrentUser(state));
 
@@ -40,7 +44,11 @@ const SuggestionExcerpt = ({ suggestion }) => {
     
 
     return (
-        <SuggestionCard>
+        <CardWrapper
+            condition={showStatus}
+            wrapIfTrue={children => <StatusCard>{children}</StatusCard>}
+            wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
+        >
             <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
             <CardText>{suggestion.description}</CardText>
 
@@ -54,7 +62,7 @@ const SuggestionExcerpt = ({ suggestion }) => {
                 {suggestion.comments}
             </CommentsBtn>
             
-        </SuggestionCard>
+        </CardWrapper>
     )
 }
 

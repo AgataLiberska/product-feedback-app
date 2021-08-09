@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 export const GoBackLink = styled(Link)`
     font-size: 0.8125rem;
     font-weight: 700;
-    color: ${props => props.darkText ? 'var(--medium-grey)' : 'var(--white)'};
+    color: ${props => props.darktext ? 'var(--medium-grey)' : 'var(--white)'};
 
     & svg {
         margin-right: 1rem;
     }
 
     & svg path {
-        stroke: ${props => props.darkText ? 'var(--dark-blue)' : 'var(--white)'};
+        stroke: ${props => props.darktext ? 'var(--dark-blue)' : 'var(--white)'};
     }
 
     @media screen and (min-width: 768px) {

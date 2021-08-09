@@ -189,3 +189,5 @@ export default suggestionsSlice.reducer;
 
 export const findSuggestionById = (state, id) => 
     state.suggestions.find(el => el.id === +id);
+
+export const findSuggestionsByStatus = (state, status) => state.suggestions.filter(sugg => sugg.status === status);

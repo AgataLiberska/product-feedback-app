@@ -6,12 +6,13 @@ import { RoadMapStatusGroup, GroupHeading, GroupTagline, GroupContainer } from '
 const RoadMapColumn = ({suggestions, heading, tagline, isSelected}) => {
     const renderedSuggestions = suggestions.map(suggestion => {
         return (
-            <li>
+            <li key={suggestion.id}>
                 <SuggestionExcerpt 
                     suggestion={suggestion} 
-                    key={suggestion.id}
                     showStatus={true}
+                    status={suggestion.status}
                 />
+                {console.log(suggestion.status)}
             </li>
 
         )

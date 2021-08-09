@@ -5,7 +5,7 @@ import { findSuggestionsByStatus } from '../suggestions/suggestionsSlice';
 import RoadMapColumn from './RoadMapColumn';
 
 // styled components
-import { RoadMapTabsContainer, RoadMapTab, RoadMapItemsWrapper, RoadMapStatusList  } from './RoadMapStyles';
+import { RoadMapTabsContainer, RoadMapTab, RoadMapItemsWrapper } from './RoadMapStyles';
 
 const RoadMapList = () => {
     const [isMobile, setIsMobile] = useState(false);

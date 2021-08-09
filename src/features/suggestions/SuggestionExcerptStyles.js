@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const setStatusColor = ({status}) => {
+    if (status === 'planned') return '#f49f85'
+    else if (status === 'in-progress') return '#ad1fea'
+    else if (status === 'live') return '#62bcfa'
+}
+
 // Individual suggestion cards
 export const SuggestionCard = styled.article`
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -13,6 +20,7 @@ export const SuggestionCard = styled.article`
     padding: 1.5rem;
     background-color: var(--white);
     border-radius: 0.625rem;
+    overflow: hidden;
 `
 export const ResizeableSuggestionCard = styled(SuggestionCard)`
     @media screen and (min-width: 500px) {
@@ -27,7 +35,15 @@ export const ResizeableSuggestionCard = styled(SuggestionCard)`
 `
 
 export const StatusCard = styled(SuggestionCard)`
-
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0.375rem;
+        background-color: ${setStatusColor}
+    }   
 `
 
 export const CardHeading = styled.h2`

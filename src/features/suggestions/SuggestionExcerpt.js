@@ -12,7 +12,7 @@ import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCatego
 
 const ConditionalWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
-const SuggestionExcerpt = ({ suggestion, showStatus }) => {
+const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => getCurrentUser(state));
 
@@ -46,7 +46,7 @@ const SuggestionExcerpt = ({ suggestion, showStatus }) => {
     return (
         <ConditionalWrapper
             condition={showStatus}
-            wrapIfTrue={children => <StatusCard>{children}</StatusCard>}
+            wrapIfTrue={children => <StatusCard status={status}>{children}</StatusCard>}
             wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
         >
             <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>

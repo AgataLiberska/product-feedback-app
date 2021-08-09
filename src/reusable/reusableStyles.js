@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const GoBackLink = styled(Link)`
+export const GoBackLink = styled.button`
+    padding-left: 0;
+    background-color: transparent;
     font-size: 0.8125rem;
     font-weight: 700;
     color: ${props => props.darktext ? 'var(--medium-grey)' : 'var(--white)'};

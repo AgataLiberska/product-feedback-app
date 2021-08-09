@@ -27,7 +27,7 @@ const Details = ({match}) => {
     return (
         <DetailsPageWrapper>
             <DetailsMenu>
-                <GoBack target='/' darkText={true}/>
+                <GoBack darkText={true}/>
                 { isAuthor ? 
                 <EditFeedbackBtn to={`/productRequests/${suggestionId}/edit`}>
                     Edit Feedback

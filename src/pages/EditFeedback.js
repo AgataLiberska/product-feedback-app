@@ -46,7 +46,7 @@ const EditFeedback = ({match}) => {
     return (
         <FormPageWrapper>
             <header>
-                <GoBack target={`/productRequests/${suggestionId}`} darkText={true}/>
+                <GoBack darkText={true}/>
             </header>
             { isAllowed ?
                 <SuggestionForm 

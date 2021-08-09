@@ -14,7 +14,7 @@ const RoadMap = () => {
         <RoadMapPageWrapper>
             <RoadMapHeaderContainer>
                 <div>
-                    <GoBack darkText={false} target='/'/>
+                    <GoBack darkText={false}/>
                     <RoadMapHeading>Roadmap</RoadMapHeading>
                 </div>
                 <AddFeedbackBtn to='/productRequests/new'>+ Add Feedback</AddFeedbackBtn>

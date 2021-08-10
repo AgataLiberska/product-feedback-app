@@ -6,7 +6,7 @@ import { getCurrentUser } from '../users/usersSlice';
 import { commentAdded } from '../comments/commentsSlice';
 import { commentCounted } from '../suggestions/suggestionsSlice';
 
-import { FormWrapper, FormHeading, FormContainer, BottomFormWrapper, CharactersLeft } from './AddCommentFormStyles';
+import { FormWrapper, FormHeading, FormContainer, BottomFormWrapper, CharactersLeft } from './CommentsStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
 const AddCommentForm = ({suggestion}) => {

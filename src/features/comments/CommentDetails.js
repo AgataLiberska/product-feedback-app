@@ -8,7 +8,7 @@ import CommentReply from './CommentReply';
 import AddReplyForm from './AddReplyForm';
 
 // styled components
-import { CommentContainer, AuthorInfo, AuthorImage, AuthorDetails,AuthorName, AuthorUsername, ReplyButton, CommentText } from './CommentDetailsStyles';
+import { CommentContainer, AuthorInfo, AuthorImage, AuthorDetails,AuthorName, AuthorUsername, ReplyButton, CommentText } from './CommentsStyles';
 
 
 const CommentDetails = ({comment}) => {

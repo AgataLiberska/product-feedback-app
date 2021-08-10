@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import { AddFeedbackBtn } from '../features/suggestions/AddSuggestionStyles';
+import { AddFeedbackBtn } from '../features/suggestions/SuggestionsStyles';
 import GoBack from '../reusable/GoBackLink';
 import RoadMapList from '../features/roadMap/RoadMapList';
 

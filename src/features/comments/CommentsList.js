@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CommentDetails from './CommentDetails';
 
-import { CommentsListContainer, CommentsCount } from './CommentsListStyles';
+import { CommentsListContainer, CommentsCount } from './CommentsStyles';
 
 const CommentsList = ({suggestion}) => {
 

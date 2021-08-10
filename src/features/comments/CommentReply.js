@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getUserById } from '../users/usersSlice';
 
-import { ReplyContainer, AuthorInfo, AuthorImage, AuthorDetails, AuthorName, AuthorUsername, CommentText, ReplyButton, ReplyingToUser } from './CommentDetailsStyles';
+import { ReplyContainer, AuthorInfo, AuthorImage, AuthorDetails, AuthorName, AuthorUsername, CommentText, ReplyButton, ReplyingToUser } from './CommentsStyles';
 
 const CommentReply = ({reply, onReply}) => {
     const author = useSelector(state => getUserById(state, reply.userId));

@@ -11,7 +11,7 @@ import GoBack from '../reusable/GoBackLink';
 import NotAuthorised from '../reusable/NotAuthorised';
 
 // styled component
-import { FormPageWrapper } from '../features/suggestions/SuggestionFormStyles';
+import { FormPageWrapper } from '../features/suggestions/SuggestionsStyles';
 
 const EditFeedback = ({match}) => {
     const suggestionId = match.params.requestId;

@@ -8,9 +8,14 @@ import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice'
 
 // images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionExcerptStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionsStyles';
 
-const ConditionalWrapper = ({condition, wrapIfTrue, wrapIfFalse, children}) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
+const ConditionalWrapper = ({
+        condition, 
+        wrapIfTrue, 
+        wrapIfFalse, 
+        children
+    }) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
 const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
     const dispatch = useDispatch()
@@ -26,6 +31,7 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
         else {
             setIsUpvoted(false);
         }   
+
     }, [currentUser, suggestion])
 
     const handleUpvoteClick = () => {
@@ -38,10 +44,7 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
             dispatch(removeSuggestionUpvoted(suggestion.id));
             dispatch(upvoteRemoved({userId: currentUser.id, suggestionId: suggestion.id}))
         }
-
-    }
-
-    
+    }    
 
     return (
         <ConditionalWrapper
@@ -51,7 +54,12 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
         >
             { showStatus ? 
                 <SuggestionStatus status={status}>
-                    {suggestion.status === "planned" ? 'Planned' : suggestion.status === "in-progress" ? 'In Progress' : 'Live'}
+                    {suggestion.status === "planned" ? 
+                        'Planned' : 
+                        suggestion.status === "in-progress" ? 
+                        'In Progress' : 
+                        'Live'
+                    }
                 </SuggestionStatus>
             : null}
             

@@ -7,7 +7,7 @@ import { commentAdded } from './commentsSlice';
 import { commentCounted } from '../suggestions/suggestionsSlice';
 
 // styled components
-import { ReplyFormContainer } from './AddReplyFormStyles';
+import { ReplyFormContainer } from './CommentsStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
 const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm, hasReplies}) => {

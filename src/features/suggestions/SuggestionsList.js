@@ -6,7 +6,7 @@ import Lightbulb from '../../assets/suggestions/icon-suggestions.svg';
 import AddSuggestionBtn from './AddSuggestionBtn';
 import NoSuggestions from './NoSuggestions';
 
-import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SuggestionSortContainer, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsListStyles';
+import { SuggestionsListContainer, SuggestionsListHeader, SuggestionsHeading, SuggestionSortContainer, SortLabel, SortSelect, SuggestionHeadingSortWrapper } from './SuggestionsStyles';
 
 const SuggestionsList = () => {
     const category = useSelector(state => state.categories.find(cat => cat.selected === true));

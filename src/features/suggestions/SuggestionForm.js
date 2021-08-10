@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 
 // styled components
-import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError, DeleteButtonWrapper } from './SuggestionFormStyles';
+import { FormContainer, FormHeading, FormControl, FormLabel, FormLabelHeading, FormInput, FeedbackFormTextArea, ButtonContainer, FormError, DeleteButtonWrapper } from './SuggestionsStyles';
 
 import { SubmitButton, CancelButton, DeleteButton } from '../../reusable/reusableStyles';
 

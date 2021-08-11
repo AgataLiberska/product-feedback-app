@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import { AddFeedbackBtn } from '../features/suggestions/AddSuggestionStyles';
+import { AddFeedbackBtn } from '../features/suggestions/SuggestionsStyles';
 import GoBack from '../reusable/GoBackLink';
 import RoadMapList from '../features/roadMap/RoadMapList';
 
@@ -14,7 +14,7 @@ const RoadMap = () => {
         <RoadMapPageWrapper>
             <RoadMapHeaderContainer>
                 <div>
-                    <GoBack darkText={false} target='/'/>
+                    <GoBack darkText={false}/>
                     <RoadMapHeading>Roadmap</RoadMapHeading>
                 </div>
                 <AddFeedbackBtn to='/productRequests/new'>+ Add Feedback</AddFeedbackBtn>

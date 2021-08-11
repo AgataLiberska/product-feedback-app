@@ -7,15 +7,19 @@ import { commentAdded } from './commentsSlice';
 import { commentCounted } from '../suggestions/suggestionsSlice';
 
 // styled components
-import { ReplyFormContainer } from './AddReplyFormStyles';
+import { ReplyFormContainer } from './CommentsStyles';
 import { TextArea, SubmitButton } from '../../reusable/reusableStyles';
 
-const AddReplyForm = ({replyingTo}) => {
+const AddReplyForm = ({ replyingTo, nestUnder, resetReplyForm, hasReplies}) => {
+    const [replyText, setReplyText] = useState(``);
+    const isFirstReply = hasReplies ? false : true; 
+    console.log(hasReplies);
+    console.log(isFirstReply);
+
     const currentUser = useSelector(state => getCurrentUser(state));
     const originalCommentAuthor = useSelector(state => getUserById(state, replyingTo.userId))
-    const dispatch = useDispatch();
 
-    const [replyText, setReplyText] = useState(``);
+    const dispatch = useDispatch();
 
     const onReplyTextChange = e => setReplyText(e.target.value);
 
@@ -32,23 +36,26 @@ const AddReplyForm = ({replyingTo}) => {
             userId: currentUser.id,
             suggestionId: replyingTo.suggestionId,
             replyingToUserId: originalCommentAuthor.id,
-            replyingToCommentId: replyingTo.id
+            replyingToCommentId: nestUnder.id
         } 
 
         dispatch(commentAdded(reply));
         dispatch(commentCounted(replyingTo.suggestionId));
 
         setReplyText("");
+        resetReplyForm();
     }
 
     return (
-        <ReplyFormContainer>
+        <ReplyFormContainer indented={isFirstReply}>
             <TextArea 
+                key={replyingTo.id}
                 aria-label="Type your reply here"
-                placeholder="Type your reply here"
+                placeholder={`Type your reply to @${originalCommentAuthor.username} here`}
                 maxLength="250"
                 value={replyText}
                 onChange={onReplyTextChange}
+                autoFocus
             />
             <SubmitButton onClick={onPostReplyClick}>Post Reply</SubmitButton>          
         </ReplyFormContainer>

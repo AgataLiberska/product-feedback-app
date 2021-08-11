@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { categorySelected } from './categoriesSlice';
-import { CategoryButton, CategoryContainer } from './CategoriesListElements';
+import { CategoryButton, CategoryContainer } from './CategoriesStyles';
 
 const CategoriesList = () => {
     const dispatch = useDispatch()

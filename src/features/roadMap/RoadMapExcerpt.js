@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RoadMapExcerptContainer, ExcerptTop, ExcerptHeading, ExcerptCategory, ExcerptCategoryNumber, LinkToRoadMap } from './RoadMapElements';
+import { RoadMapExcerptContainer, ExcerptTop, ExcerptHeading, ExcerptCategory, ExcerptCategoryNumber, LinkToRoadMap } from './RoadMapStyles';
 
 const RoadMapExcerpt = () => {
     const suggestions = useSelector(state => state.suggestions);

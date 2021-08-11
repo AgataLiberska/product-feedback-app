@@ -8,7 +8,7 @@ import { getCurrentUser } from '../features/users/usersSlice';
 import { suggestionAdded } from '../features/suggestions/suggestionsSlice';
 
 // styled components
-import { FormPageWrapper} from '../features/suggestions/SuggestionFormStyles';
+import { FormPageWrapper} from '../features/suggestions/SuggestionsStyles';
 
 
 const NewFeedback = () => {
@@ -30,7 +30,7 @@ const NewFeedback = () => {
     return (
         <FormPageWrapper>
             <header>
-                <GoBack target='/productRequests' darkText={true}/>
+                <GoBack darkText={true}/>
             </header>
             <SuggestionForm 
                 heading='Create New Feedback'

@@ -1,7 +1,7 @@
 import React from 'react';
 import AddSuggestionBtn from './AddSuggestionBtn';
 
-import { NoSuggestionsContainer, NoSuggestionsImage, NoSuggestionsHeading, NoSuggestionsText } from './NoSuggestionsStyles';
+import { NoSuggestionsContainer, NoSuggestionsImage, NoSuggestionsHeading, NoSuggestionsText } from './SuggestionsStyles';
 
 const NoSuggestions = () => {
     return (

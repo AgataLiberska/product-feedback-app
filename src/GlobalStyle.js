@@ -41,9 +41,12 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
     }
 
-    ul, ol {
+    ul, ol, li {
         list-style-type: none;
     }
+
+    
+    
 
     a {
         text-decoration: none;

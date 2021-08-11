@@ -2,13 +2,22 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+//action creators + seletor methods
 import { suggestionUpvoted, removeSuggestionUpvoted } from './suggestionsSlice';
 import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice';
 
+// images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { SuggestionCard, CardHeading, CardText, CardCategory, UpvoteButton, CommentsBtn } from './SuggestionExcerptStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionsStyles';
 
-const SuggestionExcerpt = ({ suggestion }) => {
+const ConditionalWrapper = ({
+        condition, 
+        wrapIfTrue, 
+        wrapIfFalse, 
+        children
+    }) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
+
+const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => getCurrentUser(state));
 
@@ -22,6 +31,7 @@ const SuggestionExcerpt = ({ suggestion }) => {
         else {
             setIsUpvoted(false);
         }   
+
     }, [currentUser, suggestion])
 
     const handleUpvoteClick = () => {
@@ -34,27 +44,43 @@ const SuggestionExcerpt = ({ suggestion }) => {
             dispatch(removeSuggestionUpvoted(suggestion.id));
             dispatch(upvoteRemoved({userId: currentUser.id, suggestionId: suggestion.id}))
         }
-
-    }
-
-    
+    }    
 
     return (
-        <SuggestionCard>
+        <ConditionalWrapper
+            condition={showStatus}
+            wrapIfTrue={children => <StatusCard status={status}>{children}</StatusCard>}
+            wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
+        >
+            { showStatus ? 
+                <SuggestionStatus status={status}>
+                    {suggestion.status === "planned" ? 
+                        'Planned' : 
+                        suggestion.status === "in-progress" ? 
+                        'In Progress' : 
+                        'Live'
+                    }
+                </SuggestionStatus>
+            : null}
+            
             <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
             <CardText>{suggestion.description}</CardText>
 
             <CardCategory>{suggestion.category}</CardCategory>
-            <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>
+            <ConditionalWrapper
+                condition={showStatus}
+                wrapIfTrue={children => <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children}</UpvoteButton>}
+                wrapIfFalse={children => <ResizeableUpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children} </ResizeableUpvoteButton>}
+            >
                 <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
-            </UpvoteButton>
+            </ConditionalWrapper>
             <CommentsBtn to={`/productRequests/${suggestion.id}`}>
                 <img src={CommentBubble} alt=""/>
                 {suggestion.comments}
             </CommentsBtn>
             
-        </SuggestionCard>
+        </ConditionalWrapper>
     )
 }
 

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CommentDetails from './CommentDetails';
 
-import { CommentsListContainer, CommentsCount } from './CommentsListStyles';
+import { CommentsListContainer, CommentsCount } from './CommentsStyles';
 
 const CommentsList = ({suggestion}) => {
 
@@ -11,15 +11,18 @@ const CommentsList = ({suggestion}) => {
     
     const renderedComments = comments.map(comment => {
         return (
-            <CommentDetails key={`${comment.id}`} comment={comment}/>)
-    })    
+            <CommentDetails key={comment.id} comment={comment}/>)
+    })
+
 
     return (
         <CommentsListContainer>
             <CommentsCount>
                 {suggestion.comments} Comments
             </CommentsCount>
-            {renderedComments}
+            <ul>
+                {renderedComments}
+            </ul>
         </CommentsListContainer>
     )
 }

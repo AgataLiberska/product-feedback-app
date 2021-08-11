@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddFeedbackBtn } from './AddSuggestionStyles';
+import { AddFeedbackBtn } from './SuggestionsStyles';
 
 const AddSuggestionBtn = () => {
     return (

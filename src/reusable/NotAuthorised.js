@@ -1,7 +1,7 @@
 import React from 'react';
 import LostImg from '../assets/shared/undraw_Lost.svg';
 
-import { NotAuthorisedCard, NotAuthorisedImgWrapper, NotAuthorisedImg, NotAuthorisedHeading } from './NotAuthorisedStyles';
+import { NotAuthorisedCard, NotAuthorisedImgWrapper, NotAuthorisedImg, NotAuthorisedHeading } from './reusableStyles';
 
 const NotAuthorised = () => {
     return (

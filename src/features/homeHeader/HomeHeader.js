@@ -29,7 +29,7 @@ const HomeHeader = () => {
     }
 
     return (
-        <HeaderWrapper>
+        <HeaderWrapper isMobileNavOpen={isNavOpen}>
 
                 <Banner>
                     <BannerText>

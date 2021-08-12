@@ -35,11 +35,15 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
         position: relative;
         min-height: 100vh;
         background-color: var(--background-color);
         font-family: 'Jost', sans-serif;
+    }
+
+    #root {
+        overflow: hidden;
     }
 
     ul, ol, li {

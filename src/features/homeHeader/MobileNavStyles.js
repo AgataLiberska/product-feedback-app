@@ -14,4 +14,5 @@ export const MobileNavContainer = styled.div`
     padding: 1.5rem;
     background-color: var(--background-color);
     transition: all 0.5s ease-in-out;
+    z-index: 100;
 `

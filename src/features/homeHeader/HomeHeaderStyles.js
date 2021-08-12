@@ -4,6 +4,8 @@ import tabletBanner from '../../assets/suggestions/tablet/background-header.png'
 import desktopBanner from '../../assets/suggestions/desktop/background-header.png';
 
 export const HeaderWrapper = styled.header`
+
+
     @media screen and (min-width: 768px) {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

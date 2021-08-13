@@ -50,9 +50,6 @@ const GlobalStyle = createGlobalStyle`
         list-style-type: none;
     }
 
-    
-    
-
     a {
         text-decoration: none;
     }

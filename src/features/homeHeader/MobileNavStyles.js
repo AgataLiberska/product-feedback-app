@@ -41,7 +41,7 @@ export const MobileNavContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    position: absolute;
+    position: fixed;
     top: 4.5rem;
     right: -17rem;
     width: 17rem;
@@ -52,5 +52,3 @@ export const MobileNavContainer = styled.div`
     z-index: 100;
 `
 
-//    transition: all 0.5s ease-in-out;
-//display: ${props => props.open ? 'flex' : 'none'};

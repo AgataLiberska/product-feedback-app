@@ -4,7 +4,8 @@ import tabletBanner from '../../assets/suggestions/tablet/background-header.png'
 import desktopBanner from '../../assets/suggestions/desktop/background-header.png';
 
 export const HeaderWrapper = styled.header`
-
+    position: relative;
+    z-index: 300;
 
     @media screen and (min-width: 768px) {
         display: grid;
@@ -24,6 +25,7 @@ export const HeaderWrapper = styled.header`
 
 
 export const Banner = styled.div`
+    position: ${props => props.isOpen ? 'fixed' : 'static'};
     display: flex;
     justify-content: space-between;
     width: 100%;

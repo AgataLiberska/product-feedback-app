@@ -8,7 +8,7 @@ import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice'
 
 // images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionsStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, Comments, SuggestionStatus } from './SuggestionsStyles';
 
 const ConditionalWrapper = ({
         condition, 
@@ -49,8 +49,13 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status, isLink }) => {
     return (
         <ConditionalWrapper
             condition={showStatus}
-            wrapIfTrue={children => <StatusCard status={status}>{children}</StatusCard>}
-            wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
+            wrapIfTrue={children => <StatusCard 
+                                        status={status}>
+                                            {children}
+                                    </StatusCard>}
+            wrapIfFalse={children => <ResizeableSuggestionCard>
+                                        {children}
+                                    </ResizeableSuggestionCard>}
         >
             { showStatus ? 
                 <SuggestionStatus status={status}>
@@ -97,10 +102,10 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status, isLink }) => {
                 <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
             </ConditionalWrapper>
-            <CommentsBtn to={`/productRequests/${suggestion.id}`}>
+            <Comments>
                 <img src={CommentBubble} alt=""/>
                 {suggestion.comments}
-            </CommentsBtn>
+            </Comments>
         </ConditionalWrapper>
     )
 }

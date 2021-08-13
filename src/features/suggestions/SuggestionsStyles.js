@@ -69,7 +69,7 @@ export const SortLabel = styled.label`
 export const SortSelect = styled.select` 
     padding: 0.25rem;
     background-color: var(--dark-grey);
-    border: 1px solid transparent;
+    border: 0;
     font-size: 0.75rem;
     font-weight: bold;
     color: var(--white);
@@ -284,6 +284,12 @@ export const CardHeading = styled.h2`
         &:hover {
             color: var(--dark-blue);
         }
+
+        &:focus {
+            outline: 0;
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
     }
 
     @media screen and (min-width: 768px) {
@@ -357,6 +363,11 @@ export const UpvoteButton = styled.button`
         background-color: var(--medium-blue);
     }
 
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 1px white, 0 0 0 3px var(--dark-blue);
+    }
+
     @media screen and (min-width: 1024px) {
         padding: 0.625rem 0.75rem 0.625rem 1rem;
     }
@@ -379,7 +390,7 @@ export const ResizeableUpvoteButton = styled(UpvoteButton)`
     }
 `
 
-export const CommentsBtn = styled(Link)`
+export const Comments = styled.div`
     grid-area: comments;
     justify-self: end;
     align-self: end;
@@ -466,5 +477,10 @@ export const AddFeedbackBtn = styled(Link)`
 
     &:hover {
         background-color: var(--primary-btn-hover);
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 1px var(--dark-grey-blue), 0 0 0 3px var(--primary-btn-hover);
     }
 `

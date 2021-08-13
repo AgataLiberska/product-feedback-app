@@ -96,6 +96,16 @@ export const LinkToRoadMap = styled(Link)`
     color: var(--dark-blue);
     text-decoration: underline;
     line-height: 1.25rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--medium-blue);
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0px 0 0 1px var(--white), 0 0 0 3px var(--dark-blue);
+    }
 `
 
 export const ExcerptCategory = styled.li`

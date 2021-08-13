@@ -16,13 +16,19 @@ export const GoBackLink = styled.button`
         stroke: ${props => props.darktext ? 'var(--dark-blue)' : 'var(--white)'};
     }
 
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:focus {
+        text-decoration: underline;
+        outline: 0;
+        box-shadow: 0 0 0 2px var(--dark-blue);
+    }
+
     @media screen and (min-width: 768px) {
         font-size: 0.875rem;
         transition: text-decoration 0.3s ease;
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 `
 // this needs to be in the reply styles not used anywhere else
@@ -36,6 +42,12 @@ export const SubmitButton = styled.button`
 
     &:hover {
         background-color: var(--primary-btn-hover);
+    }
+
+    &:focus {
+        background-color: var(--primary-btn-hover);
+        outline: 0;
+        box-shadow: 0 0 0 1px white, 0 0 0 3px var(--primary-btn);
     }
 `
 
@@ -55,6 +67,12 @@ export const CancelButton = styled(Link)`
         background-color: var(--dark-grey-blue-hover);
     }
 
+    &:focus {
+        background-color: var(--dark-grey-blue-hover);
+        outline: 0;
+        box-shadow: 0 0 0 1px white, 0 0 0 3px var(--dark-grey-blue);
+    }
+
     @media screen and (min-width: 768px) {
         font-size: 0.875rem;
         padding: 0.75rem 1.5rem;
@@ -66,6 +84,12 @@ export const DeleteButton = styled.button`
 
     &:hover {
         background-color: var(--red-hover);
+    }
+
+    &:focus {
+        background-color: var(--red-hover);
+        outline: 0;
+        box-shadow: 0 0 0 1px var(--white), 0 0 0 3px var(--red);
     }
 `
 

@@ -16,6 +16,11 @@ export const CategoryButton = styled.button`
         background-color: var(--dark-blue);
     }
 
+    &:focus {
+        outline: 0;
+        box-shadow: 0px 0 0 1px var(--white), 0 0 0 3px var(--dark-blue);
+    }
+
     @media screen and (min-width: 768px) {
 
         &:hover {

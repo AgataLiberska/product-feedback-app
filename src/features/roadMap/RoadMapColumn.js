@@ -11,6 +11,7 @@ const RoadMapColumn = ({suggestions, heading, tagline, isSelected}) => {
                     suggestion={suggestion} 
                     showStatus={true}
                     status={suggestion.status}
+                    isLink={true}
                 />
             </li>
 

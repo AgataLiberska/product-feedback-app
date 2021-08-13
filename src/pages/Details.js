@@ -34,7 +34,7 @@ const Details = ({match}) => {
                 </EditFeedbackBtn>
                 : null }
             </DetailsMenu>
-            <SuggestionExcerpt suggestion={currentSuggestion} />
+            <SuggestionExcerpt suggestion={currentSuggestion} isLink={false}/>
             <CommentsList suggestion={currentSuggestion} />
             <AddCommentForm suggestion={currentSuggestion}/>
         </DetailsPageWrapper>

@@ -67,9 +67,9 @@ export const SortLabel = styled.label`
 `
 
 export const SortSelect = styled.select` 
-    padding: initial;
+    padding: 0.25rem;
     background-color: var(--dark-grey);
-    border: 0;
+    border: 1px solid transparent;
     font-size: 0.75rem;
     font-weight: bold;
     color: var(--white);
@@ -275,6 +275,7 @@ export const CardHeading = styled.h2`
     margin-bottom: 0.5rem;
     font-size: 0.8125rem;
     line-height: 1.25rem;
+    color: var(--dark-grey-blue);
 
     & a {
         transition: color 0.3s ease;

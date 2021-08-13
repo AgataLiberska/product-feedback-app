@@ -17,7 +17,7 @@ const ConditionalWrapper = ({
         children
     }) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
-const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
+const SuggestionExcerpt = ({ suggestion, showStatus, status, isLink }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => getCurrentUser(state));
 
@@ -63,14 +63,36 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
                 </SuggestionStatus>
             : null}
             
-            <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
+            <CardHeading>
+                <ConditionalWrapper
+                    condition={isLink}
+                    wrapIfTrue={children => <Link 
+                                                to={`/productRequests/${suggestion.id}`}
+                                            >
+                                                {children}
+                                            </Link>}
+                    wrapIfFalse={children => <>{children}</>}
+                >
+                    {suggestion.title}
+                </ConditionalWrapper>
+            </CardHeading>
             <CardText>{suggestion.description}</CardText>
 
             <CardCategory>{suggestion.category}</CardCategory>
             <ConditionalWrapper
                 condition={showStatus}
-                wrapIfTrue={children => <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children}</UpvoteButton>}
-                wrapIfFalse={children => <ResizeableUpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children} </ResizeableUpvoteButton>}
+                wrapIfTrue={children => <UpvoteButton 
+                                            onClick={handleUpvoteClick} 
+                                            aria-pressed={isUpvoted} 
+                                            isPressed={isUpvoted}>
+                                                {children}
+                                        </UpvoteButton>}
+                wrapIfFalse={children => <ResizeableUpvoteButton 
+                                            onClick={handleUpvoteClick} 
+                                            aria-pressed={isUpvoted} 
+                                            isPressed={isUpvoted}> 
+                                                {children} 
+                                        </ResizeableUpvoteButton>}
             >
                 <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
@@ -79,7 +101,6 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
                 <img src={CommentBubble} alt=""/>
                 {suggestion.comments}
             </CommentsBtn>
-            
         </ConditionalWrapper>
     )
 }

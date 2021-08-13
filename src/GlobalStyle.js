@@ -83,6 +83,10 @@ const GlobalStyle = createGlobalStyle`
     input, textarea {
         cursor: pointer;
     }
+
+    textarea {
+        resize: vertical;
+    }
     
     select, option {
         text-transform: capitalize;

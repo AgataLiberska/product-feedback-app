@@ -5,7 +5,7 @@ export const MobileNavContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    position: absolute;
+    position: fixed;
     top: 4.5rem;
     right: ${props => props.open ? '0' : '-17rem' };
     width: 17rem;

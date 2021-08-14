@@ -42,10 +42,6 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Jost', sans-serif;
     }
 
-    #root {
-        overflow: hidden;
-    }
-
     ul, ol, li {
         list-style-type: none;
     }

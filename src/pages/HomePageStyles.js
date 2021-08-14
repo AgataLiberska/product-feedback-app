@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const HomePageContainer = styled.div`
+    overflow-x: hidden;
+    position: relative;
 
     @media screen and (min-width: 768px) {
         margin: 3.5rem 2.5rem 7rem;

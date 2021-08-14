@@ -5,14 +5,13 @@ export const MobileNavContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    position: absolute;
+    position: fixed;
     top: 4.5rem;
-    right: ${props => props.open ? '0' : '-17rem'};
-    visibility: ${props => props.open ? 'visible' : 'hidden'};
+    right: ${props => props.open ? '0' : '-17rem' };
     width: 17rem;
-    height: 100%;
+    height: calc(100vh - 4.5rem);
     padding: 1.5rem;
     background-color: var(--background-color);
-    transition: all 0.5s ease-in-out;
+    transition: right 0.5s ease;
     z-index: 100;
 `

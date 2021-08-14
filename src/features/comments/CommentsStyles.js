@@ -91,6 +91,12 @@ export const ReplyButton = styled.button`
     &:hover {
         text-decoration: underline;
     }
+
+    &:focus {
+        text-decoration: underline;
+        outline: 0;
+        box-shadow: 0 0 0 2px var(--dark-blue);
+    }
 `
 
 export const CommentText = styled.p`

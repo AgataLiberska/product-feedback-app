@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
         position: relative;
         min-height: 100vh;
         background-color: var(--background-color);
@@ -46,11 +46,9 @@ const GlobalStyle = createGlobalStyle`
         list-style-type: none;
     }
 
-    
-    
-
     a {
         text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     input, textarea, select {
@@ -66,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
 
         &:focus {
             outline: 0;
-            border: 1px solid var(--dark-blue);
+            box-shadow: 0 0 0 1px var(--dark-blue);
         }
 
         &::placeholder {
@@ -81,6 +79,10 @@ const GlobalStyle = createGlobalStyle`
 
     input, textarea {
         cursor: pointer;
+    }
+
+    textarea {
+        resize: vertical;
     }
     
     select, option {
@@ -104,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
         color: var(--white);
         white-space: nowrap;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: backgroud-color 0.3s ease, color 0.3s ease;
 
         @media screen and (min-width: 768px) {
             font-size: 0.875rem;

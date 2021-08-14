@@ -8,7 +8,7 @@ import { upvoteAdded, upvoteRemoved, getCurrentUser } from '../users/usersSlice'
 
 // images and styled comoponents
 import CommentBubble from '../../assets/shared/icon-comments.svg';
-import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, CommentsBtn, SuggestionStatus } from './SuggestionsStyles';
+import { ResizeableSuggestionCard, StatusCard, CardHeading, CardText, CardCategory, UpvoteButton, ResizeableUpvoteButton, Comments, SuggestionStatus } from './SuggestionsStyles';
 
 const ConditionalWrapper = ({
         condition, 
@@ -17,7 +17,7 @@ const ConditionalWrapper = ({
         children
     }) => condition ? wrapIfTrue(children) : wrapIfFalse(children);
 
-const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
+const SuggestionExcerpt = ({ suggestion, showStatus, status, isLink }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => getCurrentUser(state));
 
@@ -49,8 +49,13 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
     return (
         <ConditionalWrapper
             condition={showStatus}
-            wrapIfTrue={children => <StatusCard status={status}>{children}</StatusCard>}
-            wrapIfFalse={children => <ResizeableSuggestionCard>{children}</ResizeableSuggestionCard>}
+            wrapIfTrue={children => <StatusCard 
+                                        status={status}>
+                                            {children}
+                                    </StatusCard>}
+            wrapIfFalse={children => <ResizeableSuggestionCard>
+                                        {children}
+                                    </ResizeableSuggestionCard>}
         >
             { showStatus ? 
                 <SuggestionStatus status={status}>
@@ -63,23 +68,44 @@ const SuggestionExcerpt = ({ suggestion, showStatus, status }) => {
                 </SuggestionStatus>
             : null}
             
-            <CardHeading><Link to={`/productRequests/${suggestion.id}`}>{suggestion.title}</Link></CardHeading>
+            <CardHeading>
+                <ConditionalWrapper
+                    condition={isLink}
+                    wrapIfTrue={children => <Link 
+                                                to={`/productRequests/${suggestion.id}`}
+                                            >
+                                                {children}
+                                            </Link>}
+                    wrapIfFalse={children => <>{children}</>}
+                >
+                    {suggestion.title}
+                </ConditionalWrapper>
+            </CardHeading>
             <CardText>{suggestion.description}</CardText>
 
             <CardCategory>{suggestion.category}</CardCategory>
             <ConditionalWrapper
                 condition={showStatus}
-                wrapIfTrue={children => <UpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children}</UpvoteButton>}
-                wrapIfFalse={children => <ResizeableUpvoteButton onClick={handleUpvoteClick} aria-pressed={isUpvoted} isPressed={isUpvoted}>{children} </ResizeableUpvoteButton>}
+                wrapIfTrue={children => <UpvoteButton 
+                                            onClick={handleUpvoteClick} 
+                                            aria-pressed={isUpvoted} 
+                                            isPressed={isUpvoted}>
+                                                {children}
+                                        </UpvoteButton>}
+                wrapIfFalse={children => <ResizeableUpvoteButton 
+                                            onClick={handleUpvoteClick} 
+                                            aria-pressed={isUpvoted} 
+                                            isPressed={isUpvoted}> 
+                                                {children} 
+                                        </ResizeableUpvoteButton>}
             >
                 <i className="fas fa-chevron-up" />
                 {suggestion.upvotes}
             </ConditionalWrapper>
-            <CommentsBtn to={`/productRequests/${suggestion.id}`}>
+            <Comments>
                 <img src={CommentBubble} alt=""/>
                 {suggestion.comments}
-            </CommentsBtn>
-            
+            </Comments>
         </ConditionalWrapper>
     )
 }

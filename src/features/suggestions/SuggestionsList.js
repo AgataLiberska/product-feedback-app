@@ -52,7 +52,7 @@ const SuggestionsList = () => {
     } else {
         content = sortedSuggestions.map(suggestion => {
             return (
-                <SuggestionExcerpt suggestion={suggestion} key={suggestion.id}/>
+                <SuggestionExcerpt suggestion={suggestion} key={suggestion.id} isLink={true}/>
             )
         })
     }

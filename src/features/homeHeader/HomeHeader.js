@@ -31,7 +31,7 @@ const HomeHeader = () => {
     return (
         <HeaderWrapper isMobileNavOpen={isNavOpen}>
 
-                <Banner>
+                <Banner isOpen={isNavOpen}>
                     <BannerText>
                         <BannerHeading>Frontend Mentor</BannerHeading>
                         <BannerTagline>Feedback Board</BannerTagline>

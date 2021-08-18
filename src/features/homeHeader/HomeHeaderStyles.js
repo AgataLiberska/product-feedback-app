@@ -38,6 +38,7 @@ export const Banner = styled.div`
     color: var(--white);
 
     @media screen and (min-width: 768px) {
+        position: static;
         border-radius: 0.625rem;
         background-image: url(${tabletBanner})
     }

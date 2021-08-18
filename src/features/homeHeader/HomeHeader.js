@@ -15,17 +15,17 @@ const HomeHeader = () => {
         updatePredicate();
         window.addEventListener('resize', updatePredicate);
 
-        if (window.innerWidth > 768) {
-            setIsNavOpen(false);
-        }
-
         return () => {
             window.removeEventListener('resize', updatePredicate);
         }
     });
 
     const updatePredicate = () => {
-        setIsMobile(window.innerWidth < 768);
+        setIsMobile(window.innerWidth < 768)
+        
+        if (window.innerWidth > 768) {
+            setIsNavOpen(false);
+        };
     }
 
     const toggleNav = () => {
